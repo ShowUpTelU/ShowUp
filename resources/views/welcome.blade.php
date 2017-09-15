@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{asset('css/new-age.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/new-age.css')}}" rel="stylesheet">
 
   </head>
 
@@ -53,7 +53,7 @@
         <div class="row h-100">
           <div class="col-lg-7 my-auto">
             <div class="header-content mx-auto">
-              <h1 class="mb-5">New Age is an app landing page that will help you beautifully showcase your new mobile app, or anything else!</h1>
+              <h1 class="mb-5">Content Header</h1>
               <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a>
             </div>
           </div>
@@ -76,11 +76,12 @@
       </div>
     </header>
 
-    <section style="background-color: #149E57" class="download text-center" id="download">
+    <section style="background-color: #00A859" class="download text-center" id="download">
       <div class="container">
         <div class="row">
           <div class="col-md-8 mx-auto">
             <!-- <h2 class="section-heading">Discover what all the buzz is about!</h2> -->
+            <img src="{{asset('img/logo-1.png')}}"class="img-responsive">
             <p style="color: white">Content about us</p>
           </div>
         </div>
@@ -101,7 +102,7 @@
                 <div class="device">
                   <div class="screen">
                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                    <img src="{{asset('img/client.jpg')}}" class="img-fluid" alt="">
+                    <img src="{{asset('img/client.png')}}" class="img-fluid" alt="">
                   </div>
                   <div class="button">
                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
@@ -152,7 +153,7 @@
                 <div class="device">
                   <div class="screen">
                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                    <img src="{{asset('img/bussines.jpg')}}" class="img-fluid" alt="">
+                    <img src="{{asset('img/bussines.png')}}" class="img-fluid" alt="">
                   </div>
                   <div class="button">
                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
