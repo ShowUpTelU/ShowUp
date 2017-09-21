@@ -5,11 +5,11 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Show Up! Up Everything You Want!">
+    <meta name="author" content="ShowUp!">
 
     <title>ShowUp!</title>
-
+     <link rel="shortcut icon" href="{{asset('img/ico.ico')}}" />
     <!-- Bootstrap core CSS -->
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
@@ -41,35 +41,26 @@
               <a class="nav-link js-scroll-trigger" href="#download">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#features">Join</a>
+              <a class="nav-link js-scroll-trigger" href="#features">Target</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#join">Join</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{{route('survey')}}">Survey</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <header class="masthead">
+    <header class="masthead" style="height: 100%">
       <div class="container h-100">
         <div class="row h-100">
           <div class="col-lg-7 my-auto">
             <div class="header-content mx-auto">
-              <h1 class="mb-5">Content Header</h1>
-              <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a>
-            </div>
-          </div>
-          <div class="col-lg-5 my-auto">
-            <div class="device-container">
-              <div class="device-mockup iphone6_plus portrait white">
-                <div class="device">
-                  <div class="screen">
-                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                    <!-- <img src="img/demo-screen-1.jpg" class="img-fluid" alt=""> -->
-                  </div>
-                  <div class="button">
-                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                  </div>
-                </div>
-              </div>
+              <h1 class="mb-5">Search, Find, Take Up Everything You Want!</h1>
+              {{-- <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a> --}}
             </div>
           </div>
         </div>
@@ -81,8 +72,9 @@
         <div class="row">
           <div class="col-md-8 mx-auto">
             <!-- <h2 class="section-heading">Discover what all the buzz is about!</h2> -->
-            <img src="{{asset('img/logo-1.png')}}"class="img-responsive">
-            <p style="color: white">Content about us</p>
+            <img src="{{asset('img/logo-1.png')}}"class="img img-responsive" style="max-width: 75%">
+            <hr style="color: white">
+            <p style="color: white">Show Up is headquartered in Indonesia where the Co-Founder Taufan, Yusuf, Niken are the pioneer of Show Up. Show Up! was founded in 23 August 2017 to help people advertise and promote everything they want to. Besides that, Show Up come with a unique concepts and appearances to get their goals.</p>
           </div>
         </div>
       </div>
@@ -97,27 +89,15 @@
         </div>
         <div class="row">
           <div class="col-lg-4 my-auto">
-            <div class="device-container">
-              <div class="device-mockup iphone6_plus portrait white">
-                <div class="device">
-                  <div class="screen">
-                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                    <img src="{{asset('img/client.png')}}" class="img-fluid" alt="">
-                  </div>
-                  <div class="button">
-                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                  </div>
-                </div>
-              </div>
-            </div>
+            <img src="{{asset('img/client.png')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 my-auto">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="feature-item">
-                    <h3>Content ttg Client</h3>
-                    <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
+                    <h3>Why Show Up! ?</h3>
+                    <p class="text-muted">Discover everything you want to show up. Get the unique atmosphere from anyone around the world</p>
                   </div>
                 </div>
               </div>
@@ -135,71 +115,40 @@
           <hr>
         </div>
         <div class="row">
-          <div class="col-lg-8 my-auto">
+          <div class="col-lg-8">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="feature-item">
-                    <h3>Content bussines</h3>
-                    <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
+                    <h3>What you get?</h3>
+                    <p class="text-muted">Make your best choices to promote everything you want. Get your easy payment, organizing, data security, content editor and also insight your profit.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 my-auto">
-            <div class="device-container">
-              <div class="device-mockup iphone6_plus portrait white">
-                <div class="device">
-                  <div class="screen">
-                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                    <img src="{{asset('img/bussines.png')}}" class="img-fluid" alt="">
-                  </div>
-                  <div class="button">
-                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="col-lg-4">
+            <img src="{{asset('img/bussines.png')}}" class="img-fluid" alt="">
           </div>
         </div>
       </div>
     </section>
 
-    <section style="background-color: #149E57" class="contact" id="contact">
+    <section style="background-color: #00A859" class="contact" id="join">
       <div class="container">
-        <h2>We
-          <i class="fa fa-heart"></i>
-          new friends!</h2>
-        <ul class="list-inline list-social">
-          <li class="list-inline-item social-twitter">
-            <a href="#">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li class="list-inline-item social-facebook">
-            <a href="#">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li class="list-inline-item social-google-plus">
-            <a href="#">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        </ul>
+        <a href="#join" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a>
       </div>
     </section>
 
     <footer>
       <div class="container">
-        <p>&copy; 2017 Start Bootstrap. All Rights Reserved.</p>
+        <p>&copy; 2017 ShowUp! Team. All Rights Reserved.</p>
         <ul class="list-inline">
           <li class="list-inline-item">
-            <a href="#">Privacy</a>
+            <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> : public.relation@showup.id</a>
           </li>
           <li class="list-inline-item">
-            <a href="#">Terms</a>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> : @showup.official</a>
           </li>
           <li class="list-inline-item">
             <a href="#">FAQ</a>
