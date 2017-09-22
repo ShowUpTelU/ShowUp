@@ -60,6 +60,7 @@
           <div class="col-lg-7 my-auto">
             <div class="header-content mx-auto">
               <h1 class="mb-5">Search, Find, Take Up Everything You Want!</h1>
+              <h5> <a href="{{route('survey')}}">Help us to improve our services. Take the survey ...</a> </h5>
               {{-- <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a> --}}
             </div>
           </div>
