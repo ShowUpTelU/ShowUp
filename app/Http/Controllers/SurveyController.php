@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Survey;
+use App\SurveyCompetitor;
+use App\SurveyInteraction;
+use App\SurveySystem;
+use App\SurveyUser;
+use Session;
 class SurveyController extends Controller
 {
     /**
@@ -34,7 +39,62 @@ class SurveyController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $socmed = '';
+        foreach ($request->socmed as $data) {
+          $socmed = $data.' '.$socmed;
+        }
+        $survey = Survey::create([
+          'email' => $request->email,
+          'age' => $request->age,
+          'address' => $request->address,
+          'job' => $request->job,
+          'hobby' => $request->hobi,
+          'socmed' => $socmed,
+          'suggestion' => $request->suggestion,
+        ]);
+        SurveyCompetitor::create([
+          'survey_id' => $survey->id,
+          'type' => 1,
+          'job_vacancy' => $request->SUJobVacancy,
+          'data_security' => $request->SUDataSecurity,
+          'editing' => $request->SUEditing,
+          'cs' => $request->SUCS,
+          'price' => $request->SUPrice,
+          'location' => $request->SULocation,
+        ]);
+        SurveyCompetitor::create([
+          'survey_id' => $survey->id,
+          'type' => 2,
+          'job_vacancy' => $request->OJobVacancy,
+          'data_security' => $request->ODataSecurity,
+          'editing' => $request->OEditing,
+          'cs' => $request->OCS,
+          'price' => $request->OPrice,
+          'location' => $request->OLocation,
+        ]);
+        SurveyInteraction::create([
+          'survey_id' => $survey->id,
+          'first_impression' => $request->interactionFirstImpression,
+          'animation' => $request->interactionAnimation,
+          'graphic' => $request->interactionGraphic,
+          'come_back' => $request->interactionComeBack,
+        ]);
+        SurveySystem::create([
+          'survey_id' => $survey->id,
+          'interface' => $request->systemInterface,
+          'operation' => $request->systemOperation,
+          'color' => $request->systemColor,
+          'placement' => $request->systemPlacement,
+          'error' => $request->systemError,
+        ]);
+        SurveyUser::create([
+          'survey_id' => $survey->id,
+          'promotion' => $request->userPromotion,
+          'symbol' => $request->userSymbol,
+          'character' => $request->userCharacter,
+        ]);
+        Session::flash('status', 'Atas bantuan untuk mengisi survey ShowUp!');
+        return redirect()->route('survey');
     }
 
     /**
