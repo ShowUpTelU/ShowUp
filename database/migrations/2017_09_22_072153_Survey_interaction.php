@@ -16,10 +16,10 @@ class SurveyInteraction extends Migration
         Schema::create('survey_interactions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('survey_id')->unsigned();
-            $table->integer('first_impression')->default(0);
-            $table->integer('animation')->default(0);
-            $table->integer('graphic')->default(0);
-            $table->integer('come_back')->default(0);
+            $table->integer('first_impression')->nullable();
+            $table->integer('animation')->nullable();
+            $table->integer('graphic')->nullable();
+            $table->integer('come_back')->nullable();
 
             $table->foreign('survey_id')->references('id')->on('surveys');
         });

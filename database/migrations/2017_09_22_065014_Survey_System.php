@@ -16,11 +16,11 @@ class SurveySystem extends Migration
         Schema::create('survey_systems', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('survey_id')->unsigned();
-            $table->integer('interface')->default(0);
-            $table->integer('operation')->default(0);
-            $table->integer('color')->default(0);
-            $table->integer('placement')->default(0);
-            $table->integer('error')->default(0);
+            $table->integer('interface')->nullable();
+            $table->integer('operation')->nullable();
+            $table->integer('color')->nullable();
+            $table->integer('placement')->nullable();
+            $table->integer('error')->nullable();
 
             $table->foreign('survey_id')->references('id')->on('surveys');
         });

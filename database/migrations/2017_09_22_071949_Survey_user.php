@@ -16,9 +16,9 @@ class SurveyUser extends Migration
         Schema::create('survey_users', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('survey_id')->unsigned();
-            $table->integer('promotion')->default(0);
-            $table->integer('symbol')->default(0);
-            $table->integer('character')->default(0);
+            $table->integer('promotion')->nullable();
+            $table->integer('symbol')->nullable();
+            $table->integer('character')->nullable();
 
             $table->foreign('survey_id')->references('id')->on('surveys');
         });

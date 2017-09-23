@@ -67,9 +67,10 @@
         <div class="col-lg-12">
           <h1> <center>Bantu kami untuk mengisi survey ini!</center> </h1>
           @if (session('status'))
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success" role="alert"> <b>
               <h4>Terima Kasih</h4><br>
               {{ session('status') }}
+              </b>
             </div>
           @endif
             <div class="form-group">

@@ -9,6 +9,8 @@ use App\SurveyInteraction;
 use App\SurveySystem;
 use App\SurveyUser;
 use Session;
+use Mail;
+use App\Mail\SurveySent;
 class SurveyController extends Controller
 {
     /**
@@ -52,6 +54,7 @@ class SurveyController extends Controller
           'socmed' => $socmed,
           'suggestion' => $request->suggestion,
         ]);
+        Mail::send(new SurveySent($survey));
         SurveyCompetitor::create([
           'survey_id' => $survey->id,
           'type' => 1,

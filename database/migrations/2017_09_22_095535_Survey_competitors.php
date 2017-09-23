@@ -17,12 +17,12 @@ class SurveyCompetitors extends Migration
             $table->increments('id');
             $table->integer('survey_id')->unsigned();
             $table->integer('type')->default(1);
-            $table->integer('job_vacancy')->default(0);
-            $table->integer('data_security')->default(0);
-            $table->integer('editing')->default(0);
-            $table->integer('cs')->default(0);
-            $table->integer('price')->default(0);
-            $table->integer('location')->default(0);
+            $table->integer('job_vacancy')->nullable();
+            $table->integer('data_security')->nullable();
+            $table->integer('editing')->nullable();
+            $table->integer('cs')->nullable();
+            $table->integer('price')->nullable();
+            $table->integer('location')->nullable();
 
             $table->foreign('survey_id')->references('id')->on('surveys');
         });
