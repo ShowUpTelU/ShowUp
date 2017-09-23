@@ -29,6 +29,6 @@ class SurveySent extends Mailable
      */
     public function build()
     {
-        return $this->to($this->survey->email)->markdown('surveySent',['datas' => $this->survey]);
+        return $this->from('public.relation@showup.id')->to($this->survey->email)->markdown('surveySent',['datas' => $this->survey]);
     }
 }
