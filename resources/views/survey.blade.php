@@ -61,36 +61,37 @@
   {{-- START CONTENT --}}
   <section>
     <div class="container" style="height: 100%; padding: 50px">
-      <form>
+      <form action="{{route('survey')}}" method="post">
+        {{ csrf_field() }}
       <div class="row">
         <div class="col-lg-12">
           <h1> <center>Bantu kami untuk mengisi survey ini!</center> </h1>
             <div class="form-group">
               <label>Email</label>
-              <input type="email" class="form-control" placeholder="Email">
+              <input type="email" class="form-control" placeholder="Email" name="email" required>
             </div>
             <div class="form-group">
               <label>Umur</label>
-              <input type="number" class="form-control" placeholder="Umur">
+              <input type="number" class="form-control" placeholder="Umur" name="age" required>
             </div>
             <div class="form-group">
               <label>Asal</label>
-              <input type="text" class="form-control" placeholder="Asal">
+              <input type="text" class="form-control" placeholder="Asal" name="address" required>
             </div>
             <div class="form-group">
               <label>Pekerjaan</label>
-              <input type="text" class="form-control" placeholder="Pekerjaan">
+              <input type="text" class="form-control" placeholder="Pekerjaan" name="job"  required>
             </div>
             <div class="form-group">
               <label>Hobi</label>
-              <input type="text" class="form-control" placeholder="Pekerjaan">
+              <input type="text" class="form-control" placeholder="Hobi" name="hobi"  required>
             </div>
             <div class="form-group">
               <label>Sosial Media : </label>
-              <label class="checkbox-inline"><input type="checkbox" value="">LINE</label>
-              <label class="checkbox-inline"><input type="checkbox" value="">Instagram</label>
-              <label class="checkbox-inline"><input type="checkbox" value="">Facebook</label>
-              <label class="checkbox-inline"><input type="checkbox" value="">Lainnya</label>
+              <label class="checkbox-inline"><input type="checkbox" value="Line" name="socmed[]">LINE</label>
+              <label class="checkbox-inline"><input type="checkbox" value="Instagram" name="socmed[]">Instagram</label>
+              <label class="checkbox-inline"><input type="checkbox" value="Facebook" name="socmed[]">Facebook</label>
+              <label class="checkbox-inline"><input type="checkbox" value="Others" name="socmed[]">Lainnya</label>
             </div>
           </div>
         </div>
@@ -116,41 +117,41 @@
                       <tr>
                         <td>Tampilan Show Up! mudah dikenali</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemInterface" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemInterface" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemInterface" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Show Up! mudah dioperasikan</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemOperation" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemOperation" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemOperation" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Warna pada Show Up! nyaman dilihat dan tidak membosankan</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemColor" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemColor" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemColor" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Penempatan menu pada Show Up! mudah dikenali</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemPlacement" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemPlacement" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemPlacement" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Adanya error pada Show Up!</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemError" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemError" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="systemError" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                     </table>
@@ -176,25 +177,25 @@
                       <tr>
                         <td>Kesulitan mempromosikan barang</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio"  name="userPromotion" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio"  name="userPromotion" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio"  name="userPromotion" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Simbol pada Show Up! mudah dipahami</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="userSymbol" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="userSymbol" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="userSymbol" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Karakter pada Show Up! mudah dipahami</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="userCharacter" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="userCharacter" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="userCharacter" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                     </table>
@@ -220,33 +221,33 @@
                       <tr>
                         <td>Reaksi pertama pengguna mengenai Show Up!</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Jelek</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Biasa</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Bagus</label>
+                          <label class="radio-inline"><input type="radio" name="interactionFirstImpression" value='1'>Jelek</label>
+                          <label class="radio-inline"><input type="radio" name="interactionFirstImpression" value='2'>Biasa</label>
+                          <label class="radio-inline"><input type="radio" name="interactionFirstImpression" value='3'>Bagus</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Menu dan animasi pada Show Up! merespon dengan cepat</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="interactionAnimation" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="interactionAnimation" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="interactionAnimation" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Menurut pengguna seberapa besar pengaruh tampilan grafis dalam suatu aplikasi</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="interactionGraphic" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="interactionGraphic" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="interactionGraphic" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Pengguna ingin menggunakan Show Up! kembali</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="interactionComeBack" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="interactionComeBack" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="interactionComeBack" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                     </table>
@@ -276,49 +277,49 @@
                       <tr>
                         <td>Portal lowongan kerja</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUJobVacancy" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUJobVacancy" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUJobVacancy" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Data security</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUDataSecurity" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUDataSecurity" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUDataSecurity" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Editing poster dan video untuk iklan</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUEditing" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUEditing" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUEditing" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Customer care 24 jam</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUCS" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUCS" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUCS" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Harga terjangkau</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUPrice" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUPrice" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SUPrice" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Penyesuaian lokasi pengguna</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SULocation" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SULocation" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="SULocation" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       {{-- SOCMED --}}
@@ -328,49 +329,49 @@
                       <tr>
                         <td>Portal lowongan kerja</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OJobVacancy" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OJobVacancy" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OJobVacancy" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Data security</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="ODataSecurity" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="ODataSecurity" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="ODataSecurity" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Editing poster dan video untuk iklan</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OEditing" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OEditing" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OEditing" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Customer care 24 jam</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OCS" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OCS" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OCS" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Harga terjangkau</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OPrice" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OPrice" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OPrice" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                       <tr>
                         <td>Penyesuaian lokasi pengguna</td>
                         <td>
-                          <label class="radio-inline"><input type="radio" name="optradio">Kurang Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Setuju</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Sangat Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OLocation" value='1'>Kurang Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OLocation" value='2'>Setuju</label>
+                          <label class="radio-inline"><input type="radio" name="OLocation" value='3'>Sangat Setuju</label>
                         </td>
                       </tr>
                     </table>
@@ -382,10 +383,10 @@
         </div>
         <div class="form-group">
           <label>Saran</label>
-          <textarea class="form-control"></textarea>
+          <textarea class="form-control" name="suggestion"></textarea>
         </div>
         <div class="form-group">
-          <button class="btn btn-warning">Simpan</button>
+          <button class="btn btn-warning" type="submit">Simpan</button>
         </div>
         </form>
     </div>

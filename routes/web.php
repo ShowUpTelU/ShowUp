@@ -14,6 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
-Route::get('/survey', function () {
-    return view('survey');
-})->name('survey');
+Route::get('/survey','SurveyController@create')->name('survey');
+Route::post('/survey','SurveyController@store')->name('survey');
