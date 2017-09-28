@@ -8,7 +8,7 @@
     <meta name="description" content="Show Up! Up Everything You Want!">
     <meta name="author" content="ShowUp!">
 
-    <title>ShowUp!</title>
+    <title>Up Everything You Want!</title>
      <link rel="shortcut icon" href="{{asset('img/ico.ico')}}" />
     <!-- Bootstrap core CSS -->
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

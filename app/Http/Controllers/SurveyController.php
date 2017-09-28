@@ -20,7 +20,14 @@ class SurveyController extends Controller
      */
     public function index()
     {
-
+      return view('survey.result',[
+        'data' => Survey::all(),
+        'system' => SurveySystem::all(),
+        'user' => SurveyUser::all(),
+        'interaction' => SurveyInteraction::all(),
+        'ShowUp' => SurveyCompetitor::where('type',1)->get(),
+        'others' => SurveyCompetitor::where('type',2)->get(),
+      ]);
     }
 
     /**
@@ -30,7 +37,7 @@ class SurveyController extends Controller
      */
     public function create()
     {
-        return view('survey');
+        return view('survey.survey');
     }
 
     /**
