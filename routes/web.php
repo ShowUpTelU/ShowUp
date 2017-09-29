@@ -18,3 +18,6 @@ Route::get('/', function () {
 Route::get('/survey','SurveyController@create')->name('survey');
 Route::post('/survey','SurveyController@store')->name('survey');
 Route::get('surveyResult','SurveyController@index')->name('survey.result');
+Route::get('survey2',function(){
+  return view('survey/survey2');
+});
