@@ -38,7 +38,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#target">Target</a></li>
                 <li><a href="#join">Join</a></li>
-                <li><a href="#">Survey</a></li>
+                <li><a href="{{route('survey')}}">Survey</a></li>
               </ul>
             </div>
           </nav>
@@ -47,7 +47,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#target">Target</a></li>
           <li><a href="#join">Join</a></li>
-          <li><a href="#">Survey</a></li>
+          <li><a href="{{route('survey')}}">Survey</a></li>
         </ul>
       </header>
       <div class="parallax-container section scrollspy"  id="header" class="">

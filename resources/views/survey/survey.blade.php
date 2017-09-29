@@ -37,19 +37,19 @@
            </a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="#about">About</a></li>
-            <li><a href="#target">Target</a></li>
-            <li><a href="#join">Join</a></li>
-            <li><a href="#survey">Survey</a></li>
+            <li><a href="{{route('index')}}">About</a></li>
+            <li><a href="{{route('index')}}">Target</a></li>
+            <li><a href="{{route('index')}}">Join</a></li>
+            <li><a href="{{route('survey')}}">Survey</a></li>
           </ul>
         </div>
       </nav>
     </div>
     <ul class="side-nav" id="mobile-demo">
-      <li><a href="#about">About</a></li>
-      <li><a href="#target">Target</a></li>
-      <li><a href="#join">Join</a></li>
-      <li><a href="#">Survey</a></li>
+      <li><a href="{{route('index')}}">About</a></li>
+      <li><a href="{{route('index')}}">Target</a></li>
+      <li><a href="{{route('index')}}">Join</a></li>
+      <li><a href="{{route('survey')}}">Survey</a></li>
     </ul>
   </header>
   <div class="parallax-container section scrollspy"  id="header" class="">
