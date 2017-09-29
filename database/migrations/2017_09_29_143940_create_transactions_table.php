@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('clientId')->unsigned();
             $table->integer('businessId')->unsigned();
             $table->integer('status')->default(0);
+            $table->integer('price')->default(0);
             $table->timestamps();
 
             $table->foreign('clientId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

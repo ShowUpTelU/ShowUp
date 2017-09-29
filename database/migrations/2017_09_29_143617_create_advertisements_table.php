@@ -18,6 +18,7 @@ class CreateAdvertisementsTable extends Migration
             $table->integer('userId')->unsigned();
             $table->string('title');
             $table->text('desc');
+            $table->integer('price')->default(0);
             $table->timestamps();
 
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
