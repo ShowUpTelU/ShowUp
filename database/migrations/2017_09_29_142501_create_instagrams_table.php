@@ -19,6 +19,7 @@ class CreateInstagramsTable extends Migration
             $table->string('accountName');
             $table->integer('followers')->default(0);
             $table->string('link');
+            $table->tinyInteger('active')->default(0);
             //$table->string('category');
             //$table->timestamps();
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
