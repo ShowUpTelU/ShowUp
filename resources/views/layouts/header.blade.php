@@ -29,14 +29,4 @@
     <li><a href="{{route('index')}}">Login</a></li>
   </ul>
 </header>
-<div class="parallax-container section scrollspy"  id="header" class="">
-  <div class="parallax "><img src="{{asset('img/header.png')}}"></div>
-  <div class="row">
-    <div class="col l11 offset-l1">
-      <h3 class="white-text" style="margin-top: 25%">
-        Search, Find, Take Up <br> Everything You Want!
-      </h3>
-    </div>
-  </div>
-</div>
 <!-- END HEADER -->
