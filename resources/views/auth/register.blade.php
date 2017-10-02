@@ -12,7 +12,7 @@
           <h3>Register</h3>
         </div>
       </div>
-      <form class="{{ route('register') }}" action="index.html" method="post" enctype="multipart/form-data">
+      <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
           <div class="input-field col s6">
@@ -40,11 +40,18 @@
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s6">
             <input name="password" id="password" type="password" class="validate" required maxlength="12">
             <label for="password">Password</label>
             @if ($errors->has('password'))
                 <small class="red-text">{{ $errors->first('password') }}</small>
+            @endif
+          </div>
+          <div class="input-field col s6">
+            <input name="password_confirmation" id="password_confirmation" type="password" class="validate" required maxlength="12">
+            <label for="password_confirmation">Confrim Password</label>
+            @if ($errors->has('password_confirmation'))
+                <small class="red-text">{{ $errors->first('password_confirmation') }}</small>
             @endif
           </div>
         </div>
@@ -69,10 +76,10 @@
         <div class="file-field input-field">
           <div class="btn amber">
             <i class="tiny material-icons">add_a_photo</i>
-            <input type="file">
+            <input name="photo" type="file">
           </div>
           <div class="file-path-wrapper">
-            <input name="photo" class="file-path validate" type="text" placeholder="Photo" required>
+            <input class="file-path validate" type="text" placeholder="Photo" required>
           </div>
           @if ($errors->has('photo'))
               <small class="red-text">{{ $errors->first('photo') }}</small>

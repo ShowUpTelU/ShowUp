@@ -18,7 +18,21 @@
         <ul class="right hide-on-med-and-down">
           <li><a class="dropdown-button" href="#!" data-activates="ads">Advertisers <i class="material-icons right">arrow_drop_down</i></a></li>
           <li><a class="dropdown-button" href="#!" data-activates="product">Products <i class="material-icons right">arrow_drop_down</i></a></li>
-          <li><a href="{{route('login')}}">Login</a></li>
+          @if (Auth::id())
+            <li>
+              <a href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                  Logout
+              </a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+              </form>
+            </li>
+          @else
+            <li><a href="{{route('login')}}">Login</a></li>
+          @endif
         </ul>
       </div>
     </nav>
