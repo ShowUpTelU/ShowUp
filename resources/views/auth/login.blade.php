@@ -32,6 +32,11 @@
             @endif
           </div>
         </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a href="{{ route('password.request') }}">Forgot Password?</a>
+          </div>
+        </div>
         <div class="row center">
           <div class="input-field col s12">
             <button type="submit" class="btn amber" style="width: 100%">Sign In!</button>
