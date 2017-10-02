@@ -95,10 +95,10 @@
         </div>
       </div>
 
-      <div id="join" class="container-fluid full-height green center section scrollspy">
+      <div id="join" class="container-fluid green center section scrollspy">
         <div class="row">
-          <div class="col l12" style="margin-top: 25%;">
-            <button class="btn btn-large amber">Start now for free</button>
+          <div class="col l12" style="margin-top: 20px">
+            <a href="{{route('login')}}"><button class="btn btn-large amber">Start now for free</button></a>
           </div>
         </div>
       </div>
