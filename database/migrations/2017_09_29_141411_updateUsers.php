@@ -19,7 +19,7 @@ class UpdateUsers extends Migration
             $table->integer('typeId')->default(1);
             $table->text('address');
             $table->string('phone');
-            $table->string('photo');
+            $table->string('photo')->default("avatar/avatar.png");
         });
     }
 

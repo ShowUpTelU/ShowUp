@@ -10,18 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
+
+//Auth
+Auth::routes();
+Route::get('/profile','UserController@edit')->name('profile');
+Route::post('/profile/{user}','UserController@update')->name('addProfile');
+//Instagram
+Route::get('/instagram','Instagram@edit')->name('instagram');
 // Survey
 Route::get('/survey','SurveyController@create')->name('survey');
 Route::post('/survey','SurveyController@store')->name('survey');
 Route::get('surveyResult','SurveyController@index')->name('survey.result');
-Route::get('survey2',function(){
-  return view('survey/survey2');
-});
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'phone' => 'required|string|min:6',
             'address' => 'required|string',
-            'photo' => 'required|image'
+            // 'photo' => 'required|image'
         ]);
     }
 
@@ -66,7 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $path = $request->photo->store('avatar', 'public');
+        // $path = $data->photo->store('avatar', 'public');
         return User::create([
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
@@ -74,7 +74,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'phone' => $data['phone'],
             'address' => $data['address'],
-            'photo' => $data['photo'],
+            // 'photo' => $path,
         ]);
     }
 }
