@@ -18,8 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/profile','UserController@edit')->name('profile');
 Route::post('/profile/{user}','UserController@update')->name('addProfile');
+
 //Instagram
-Route::get('/instagram','Instagram@edit')->name('instagram');
+Route::get('/instagram','InstagramController@create')->name('instagram');
+Route::post('/instagram','InstagramController@store')->name('addInstagram');
+Route::post('/instagram/{instagram}','InstagramController@update')->name('updateInstagram');
+
 // Survey
 Route::get('/survey','SurveyController@create')->name('survey');
 Route::post('/survey','SurveyController@store')->name('survey');
