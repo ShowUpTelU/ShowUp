@@ -82,9 +82,9 @@ class UserController extends Controller
         //photo
         if($request->photo){
           $path = $request->photo->store('avatar', 'public');
-          // if ($user->photo != "avatar/avatar.png") {
+          if ($user->photo != "avatar/avatar.png") {
             Storage::disk('public')->delete($user->photo);
-          // }
+          }
         }else{
           $path = $user->photo;
         }
