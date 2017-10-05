@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Advertisement;
+use App\AdvertisementPhoto;
 use Illuminate\Http\Request;
-
+use Storage;
+use Auth;
 class AdvertisementController extends Controller
 {
     /**
@@ -14,7 +16,9 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        //
+        return view('ads.myAds',[
+          'data' => Advertisement::where('userId',Auth::user()->id)->get()
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class AdvertisementController extends Controller
      */
     public function create()
     {
-        //
+        return view('ads.create');
     }
 
     /**
@@ -35,7 +39,26 @@ class AdvertisementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+          'title' => 'required|string|max:255',
+          'price' => 'required|integer',
+          'desc' => 'required',
+          'photos[]' => 'image'
+        ]);
+        $ads = Advertisement::create([
+          'userId' => Auth::user()->id,
+          'title' => $request->title,
+          'price' => $request->price,
+          'desc' => $request->desc,
+        ]);
+        foreach ($request->photos as $photo) {
+          $path = $photo->store('ads', 'public');
+          AdvertisementPhoto::create([
+            'advertisementsId' => $ads->id,
+            'path' => $path
+          ]);
+        }
+        return redirect()->route('myAds');
     }
 
     /**

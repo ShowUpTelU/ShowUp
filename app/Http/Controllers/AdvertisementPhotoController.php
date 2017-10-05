@@ -14,7 +14,7 @@ class AdvertisementPhotoController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

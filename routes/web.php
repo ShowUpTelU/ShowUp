@@ -24,6 +24,12 @@ Route::get('/instagram','InstagramController@create')->name('instagram');
 Route::post('/instagram','InstagramController@store')->name('addInstagram');
 Route::post('/instagram/{instagram}','InstagramController@update')->name('updateInstagram');
 
+//Ads
+Route::get('/ads','AdvertisementController@create')->name('ads');
+Route::get('/myAds','AdvertisementController@index')->name('myAds');
+Route::get('/AdsPhoto/{id}','AdvertisementPhotoController@index')->name('photoAds');
+Route::post('ads','AdvertisementController@store')->name('addAds');
+
 // Survey
 Route::get('/survey','SurveyController@create')->name('survey');
 Route::post('/survey','SurveyController@store')->name('survey');
