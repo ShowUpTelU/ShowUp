@@ -82,7 +82,9 @@ class AdvertisementController extends Controller
      */
     public function edit(Advertisement $advertisement)
     {
-        //
+        return view('ads.edit',[
+          'data' => $advertisement
+        ]);
     }
 
     /**
@@ -94,7 +96,18 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, Advertisement $advertisement)
     {
-        //
+      foreach ($request->photos as $photo) {
+        $path = $photo->store('ads', 'public');
+        AdvertisementPhoto::create([
+          'advertisementsId' => $advertisement->id,
+          'path' => $path
+        ]);
+      }
+      $advertisement->title = $request->title;
+      $advertisement->price = $request->price;
+      $advertisement->desc = $request->desc;
+      $advertisement->save();
+        return redirect()->route('detailAds',['advertisement' => $advertisement->id]);
     }
 
     /**

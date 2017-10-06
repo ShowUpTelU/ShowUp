@@ -60,7 +60,7 @@
         </div>
         <div class="row">
           <div class="col l6">
-            <button class="btn amber full-width">Edit this post</button>
+            <a href="{{route('editAds',['advertisement' => $data->id])}}"><button class="btn amber full-width">Edit this post</button></a>
           </div>
           <div class="col l6">
             <button class="btn red full-width">Delete this post</button>
