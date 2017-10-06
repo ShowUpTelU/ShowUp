@@ -32,6 +32,7 @@ Route::post('ads','AdvertisementController@store')->name('addAds');
 Route::get('deletePhotoAds/{advertisementPhoto}','AdvertisementPhotoController@destroy')->name('deletePhotoAds');
 Route::get('/editAds/{advertisement}','AdvertisementController@edit')->name('editAds');
 Route::post('/editAds/{advertisement}','AdvertisementController@update')->name('updateAds');
+Route::get('/deleteAds/{advertisement}','AdvertisementController@destroy')->name('deleteAds');
 
 // Survey
 Route::get('/survey','SurveyController@create')->name('survey');

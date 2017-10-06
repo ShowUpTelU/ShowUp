@@ -51,12 +51,14 @@ class AdvertisementController extends Controller
           'price' => $request->price,
           'desc' => $request->desc,
         ]);
-        foreach ($request->photos as $photo) {
-          $path = $photo->store('ads', 'public');
-          AdvertisementPhoto::create([
-            'advertisementsId' => $ads->id,
-            'path' => $path
-          ]);
+        if ($request->photos) {
+          foreach ($request->photos as $photo) {
+            $path = $photo->store('ads', 'public');
+            AdvertisementPhoto::create([
+              'advertisementsId' => $ads->id,
+              'path' => $path
+            ]);
+          }
         }
         return redirect()->route('myAds');
     }
@@ -96,12 +98,14 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, Advertisement $advertisement)
     {
-      foreach ($request->photos as $photo) {
-        $path = $photo->store('ads', 'public');
-        AdvertisementPhoto::create([
-          'advertisementsId' => $advertisement->id,
-          'path' => $path
-        ]);
+      if ($request->photos) {
+        foreach ($request->photos as $photo) {
+          $path = $photo->store('ads', 'public');
+          AdvertisementPhoto::create([
+            'advertisementsId' => $advertisement->id,
+            'path' => $path
+          ]);
+        }
       }
       $advertisement->title = $request->title;
       $advertisement->price = $request->price;
@@ -118,6 +122,12 @@ class AdvertisementController extends Controller
      */
     public function destroy(Advertisement $advertisement)
     {
-        //
+        if ($advertisement->AdsPhotos) {
+          foreach ($advertisement->AdsPhotos as $row) {
+            Storage::disk('public')->delete($row->path);
+          }
+        }
+        $advertisement->delete();
+        return redirect()->route('myAds');
     }
 }
