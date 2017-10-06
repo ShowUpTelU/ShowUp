@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AdvertisementPhoto;
 use Illuminate\Http\Request;
-
+use Storage;
 class AdvertisementPhotoController extends Controller
 {
     /**
@@ -14,7 +14,7 @@ class AdvertisementPhotoController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -80,6 +80,8 @@ class AdvertisementPhotoController extends Controller
      */
     public function destroy(AdvertisementPhoto $advertisementPhoto)
     {
-        //
+        Storage::disk('public')->delete($advertisementPhoto->path);
+        $advertisementPhoto->delete();
+        return redirect()->route('detailAds',['advertisement' => $advertisementPhoto->advertisementsId]);
     }
 }

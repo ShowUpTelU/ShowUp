@@ -27,8 +27,9 @@ Route::post('/instagram/{instagram}','InstagramController@update')->name('update
 //Ads
 Route::get('/ads','AdvertisementController@create')->name('ads');
 Route::get('/myAds','AdvertisementController@index')->name('myAds');
-Route::get('/AdsPhoto/{id}','AdvertisementPhotoController@index')->name('photoAds');
+Route::get('/detailAds/{advertisement}','AdvertisementController@show')->name('detailAds');
 Route::post('ads','AdvertisementController@store')->name('addAds');
+Route::get('deletePhotoAds/{advertisementPhoto}','AdvertisementPhotoController@destroy')->name('deletePhotoAds');
 
 // Survey
 Route::get('/survey','SurveyController@create')->name('survey');

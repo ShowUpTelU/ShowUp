@@ -30,8 +30,7 @@
             <td>Rp. {{number_format($row->price)}}</td>
             <td>{{$row->created_at}}</td>
             <td>
-              <a href="{{route('photoAds',['id' => $row->id])}}"><button class="btn green tooltipped" data-position="right" data-delay="50" data-tooltip="Show IG"><i class="material-icons">insert_chart</i></button><br></a>
-              <a href="{{route('photoAds',['id' => $row->id])}}"><button class="btn blue tooltipped" data-position="right" data-delay="50" data-tooltip="Show Detail"><i class="material-icons">slideshow</i></button><br></a>
+              <a href="{{route('detailAds',['id' => $row->id])}}"><button class="btn blue tooltipped" data-position="right" data-delay="50" data-tooltip="Show Detail"><i class="material-icons">slideshow</i></button><br></a>
             </td>
           </tr>
         @endforeach

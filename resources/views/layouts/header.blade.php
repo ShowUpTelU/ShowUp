@@ -3,8 +3,8 @@
   <div class="navbar-fixed">
     <!-- Dropdown Structure -->
     <ul id="ads" class="dropdown-content">
-      <li><a href="{{route('ads')}}">Post Your IG</a></li>
-      @if (Auth::user()->id)
+      @if (Auth::user())
+        <li><a href="{{route('ads')}}">Post Your IG</a></li>
         <li><a href="{{route('myAds')}}">My Post</a></li>
       @endif
       <li><a href="#!">Find Advertisers</a></li>

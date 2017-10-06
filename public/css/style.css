@@ -11,3 +11,6 @@ margin-bottom: 5px;
   min-height: 650px;
   padding: 20px;
 }
+.full-width{
+  width: 100%;
+}
