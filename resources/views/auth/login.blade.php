@@ -34,7 +34,7 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <a href="{{ route('register') }}">Doesnt have account</a> <br>
+            <a href="{{ route('register') }}">Haven't have account</a> <br>
             <a href="{{ route('password.request') }}">Forgot Password?</a>
           </div>
         </div>

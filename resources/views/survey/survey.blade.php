@@ -17,8 +17,7 @@
       <nav>
         <div class="nav-wrapper green">
           <a href="#header" class="brand-logo">
-            {{-- <img src="{{asset('img/white-logo-main.png')}}" class="responsive-img nav-logo"> --}}
-            Show Up!
+            <img src="{{asset('img/logo-app.png')}}" class="responsive-img nav-logo"  style="padding-bottom: 10px">
            </a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">

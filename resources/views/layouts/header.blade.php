@@ -27,7 +27,7 @@
     {{-- End Dropdown Structure --}}
     <nav>
       <div class="nav-wrapper green">
-        <a href="/" class="brand-logo"> <img src="{{asset('img/white-logo-main.png')}}" class="responsive-img nav-logo"> </a>
+        <a href="/" class="brand-logo"> <img src="{{asset('img/logo-app.png')}}" class="responsive-img nav-logo" style="padding-bottom: 10px"> </a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a class="dropdown-button" href="#!" data-activates="ads">Advertisers <i class="material-icons right">arrow_drop_down</i></a></li>

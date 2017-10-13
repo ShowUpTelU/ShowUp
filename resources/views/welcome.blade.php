@@ -17,7 +17,7 @@
         <div class="navbar-fixed">
           <nav>
             <div class="nav-wrapper green">
-              <a href="#header" class="brand-logo"> <img src="{{asset('img/white-logo-main.png')}}" class="responsive-img nav-logo"> </a>
+              <a href="#header" class="brand-logo"> <img src="{{asset('img/logo-app.png')}}" class="responsive-img nav-logo" style="padding-bottom: 10px"> </a>
               <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="#about">About</a></li>
@@ -95,9 +95,9 @@
         </div>
       </div>
 
-      <div id="join" class="container-fluid green center section scrollspy">
+      <div id="join" class="container-fluid green section scrollspy">
         <div class="row">
-          <div class="col l12" style="margin-top: 20px">
+          <div class="col l12 center" style="margin-top: 20px">
             <a href="{{route('login')}}"><button class="btn btn-large amber">Start now for free</button></a>
           </div>
         </div>
