@@ -9,7 +9,8 @@
           <h3>Edit {{$data->title}}'s Post</h3>
         </div>
       </div>
-        <form action="{{route('updateAds',['advertisement'=>$data->id])}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('ads.update',['ad'=>$data->id])}}" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="_method" value="PUT">
           {{ csrf_field() }}
           <div class="row">
             <div class="input-field col s6">

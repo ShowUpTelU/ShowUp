@@ -60,7 +60,7 @@ class AdvertisementController extends Controller
             ]);
           }
         }
-        return redirect()->route('myAds');
+        return redirect()->route('ads.index');
     }
 
     /**
@@ -69,10 +69,10 @@ class AdvertisementController extends Controller
      * @param  \App\Advertisement  $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function show(Advertisement $advertisement)
+    public function show(Advertisement $ad)
     {
         return view('ads.detail',[
-          'data' => $advertisement
+          'data' => $ad
         ]);
     }
 
@@ -82,10 +82,10 @@ class AdvertisementController extends Controller
      * @param  \App\Advertisement  $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function edit(Advertisement $advertisement)
+    public function edit(Advertisement $ad)
     {
         return view('ads.edit',[
-          'data' => $advertisement
+          'data' => $ad
         ]);
     }
 
@@ -96,22 +96,22 @@ class AdvertisementController extends Controller
      * @param  \App\Advertisement  $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Advertisement $advertisement)
+    public function update(Request $request, Advertisement $ad)
     {
       if ($request->photos) {
         foreach ($request->photos as $photo) {
           $path = $photo->store('ads', 'public');
           AdvertisementPhoto::create([
-            'advertisementsId' => $advertisement->id,
+            'advertisementsId' => $ad->id,
             'path' => $path
           ]);
         }
       }
-      $advertisement->title = $request->title;
-      $advertisement->price = $request->price;
-      $advertisement->desc = $request->desc;
-      $advertisement->save();
-        return redirect()->route('detailAds',['advertisement' => $advertisement->id]);
+      $ad->title = $request->title;
+      $ad->price = $request->price;
+      $ad->desc = $request->desc;
+      $ad->save();
+        return redirect()->route('ads.show',['advertisement' => $ad->id]);
     }
 
     /**
@@ -120,14 +120,14 @@ class AdvertisementController extends Controller
      * @param  \App\Advertisement  $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Advertisement $advertisement)
+    public function destroy(Advertisement $ad)
     {
-        if ($advertisement->AdsPhotos) {
-          foreach ($advertisement->AdsPhotos as $row) {
+        if ($ad->AdsPhotos) {
+          foreach ($ad->AdsPhotos as $row) {
             Storage::disk('public')->delete($row->path);
           }
         }
-        $advertisement->delete();
-        return redirect()->route('myAds');
+        $ad->delete();
+        return redirect()->route('ads.index');
     }
 }

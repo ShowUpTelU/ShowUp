@@ -9,7 +9,7 @@
           <h3>Post Your Ads</h3>
         </div>
       </div>
-        <form action="{{route('addAds')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('ads.store')}}" method="post" enctype="multipart/form-data">
           {{ csrf_field() }}
           <div class="row">
             <div class="input-field col s6">

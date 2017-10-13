@@ -82,6 +82,6 @@ class AdvertisementPhotoController extends Controller
     {
         Storage::disk('public')->delete($advertisementPhoto->path);
         $advertisementPhoto->delete();
-        return redirect()->route('detailAds',['advertisement' => $advertisementPhoto->advertisementsId]);
+        return redirect()->route('ads.show',['advertisement' => $advertisementPhoto->advertisementsId]);
     }
 }

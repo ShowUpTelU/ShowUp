@@ -60,31 +60,17 @@
         </div>
         <div class="row">
           <div class="col l6">
-            <a href="{{route('editAds',['advertisement' => $data->id])}}"><button class="btn amber full-width">Edit this post</button></a>
+            <a href="{{route('ads.edit',['advertisement' => $data->id])}}"><button class="btn amber full-width">Edit this post</button></a>
           </div>
           <div class="col l6">
-            <a href="{{route('deleteAds',['advertisement' => $data->id])}}"><button class="btn red full-width">Delete this post</button></a>
+            {{-- <a href="{{route('ads.destroy',['advertisement' => $data->id])}}"><button class="btn red full-width">Delete this post</button></a> --}}
+            <form action="{{route('ads.destroy',['advertisement' => $data->id])}}" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              {{ csrf_field() }}
+              <button type="submit" class="btn red full-width">Delete this post</button>
+            </form>
           </div>
         </div>
-        {{-- <div class="row">
-          <div class="file-field input-field">
-            <div class="btn amber">
-              <span>Photos</span>
-              <input name="photos[]" type="file" multiple>
-            </div>
-            <div class="file-path-wrapper">
-              <input class="file-path validate" type="text" placeholder="Upload one or more photos">
-            </div>
-            @if ($errors->has('photos'))
-                <small class="red-text">{{ $errors->first('photos') }}</small>
-            @endif
-          </div>
-        </div> --}}
-        {{-- <div class="row center">
-          <div class="input-field col s12">
-            <button type="submit" class="btn amber" style="width: 100%">Post!</button>
-          </div>
-        </div> --}}
     </div>
   </div>
 </div>

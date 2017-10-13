@@ -4,8 +4,8 @@
     <!-- Dropdown Structure -->
     <ul id="ads" class="dropdown-content">
       @if (Auth::user())
-        <li><a href="{{route('ads')}}">Post Your IG</a></li>
-        <li><a href="{{route('myAds')}}">My Post</a></li>
+        <li><a href="{{route('ads.create')}}">Add new post</a></li>
+        <li><a href="{{route('ads.index')}}">Show my posts</a></li>
       @endif
       <li><a href="#!">Find Advertisers</a></li>
     </ul>
