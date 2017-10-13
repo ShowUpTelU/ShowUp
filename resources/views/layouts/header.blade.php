@@ -11,7 +11,7 @@
     </ul>
     <ul id="settings" class="dropdown-content">
       <li><a href="{{ route('profile')}}">Profile</a></li>
-      <li><a href="{{ route('instagram')}}">Instagram</a></li>
+      <li><a href="{{ route('instagram.create')}}">Instagram</a></li>
       <li>
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();

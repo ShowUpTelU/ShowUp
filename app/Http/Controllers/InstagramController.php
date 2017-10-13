@@ -24,7 +24,7 @@ class InstagramController extends Controller
      */
     public function create()
     {
-        return view('instagram',[
+        return view('instagram.create',[
           'data' => Instagram::where('userId',Auth::user()->id)->first()
         ]);
     }
@@ -44,7 +44,7 @@ class InstagramController extends Controller
           'link' => $request->link,
           'active' => $request->active,
         ]);
-        return redirect()->route('instagram');
+        return redirect()->route('instagram.create');
     }
 
     /**
@@ -84,7 +84,7 @@ class InstagramController extends Controller
           'link' => $request->link,
           'active' => $request->active,
         ]);
-        return redirect()->route('instagram');
+        return redirect()->route('instagram.create');
     }
 
     /**

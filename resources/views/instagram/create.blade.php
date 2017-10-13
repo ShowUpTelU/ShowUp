@@ -10,7 +10,8 @@
         </div>
       </div>
       @if ($data)
-        <form action="{{route('updateInstagram',['instagram' => $data->id])}}" method="post">
+        <form action="{{route('instagram.update',['instagram' => $data->id])}}" method="post">
+          <input type="hidden" name="_method" value="PUT">
           {{ csrf_field() }}
           <div class="row">
             <div class="input-field col s6">
@@ -52,7 +53,7 @@
           </div>
         </form>
       @else
-        <form action="{{route('addInstagram')}}" method="post">
+        <form action="{{route('instagram.store')}}" method="post">
           {{ csrf_field() }}
           <div class="row">
             <div class="input-field col s6">
