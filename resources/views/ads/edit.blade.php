@@ -61,10 +61,10 @@
   </div>
 </div>
 @endsection
-@section('js')
+@push('js')
   <script type="text/javascript">
   $(document).ready(function(){
     $('.materialboxed').materialbox();
   });
   </script>
-@endsection
+@endpush

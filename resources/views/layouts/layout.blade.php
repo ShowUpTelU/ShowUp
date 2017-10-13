@@ -46,6 +46,6 @@
       <script type="text/javascript">
           $(".button-collapse").sideNav();
       </script>
-      @yield('js')
+      @stack('js')
     </body>
   </html>

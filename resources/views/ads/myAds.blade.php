@@ -39,10 +39,10 @@
   </div>
 </div>
 @endsection
-@section('js')
+@push('js')
   <script type="text/javascript">
   $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
   });
   </script>
-@endsection
+@endpush
