@@ -20,15 +20,15 @@ Route::get('/profile','UserController@edit')->name('profile');
 Route::post('/profile/{user}','UserController@update')->name('addProfile');
 
 //Instagram
-// Route::get('/instagram','InstagramController@create')->name('instagram');
-// Route::post('/instagram','InstagramController@store')->name('addInstagram');
-// Route::post('/instagram/{instagram}','InstagramController@update')->name('updateInstagram');
 Route::resource('instagram','InstagramController');
 
 //Ads
 Route::resource('ads','AdvertisementController');
 Route::get('deletePhotoAds/{advertisementPhoto}','AdvertisementPhotoController@destroy')->name('deletePhotoAds');
+Route::get('adsAll','AdvertisementController@all')->name('ads.all');
 
+//Bid
+Route::resource('bid','BidController');
 // Survey
 Route::get('/survey','SurveyController@create')->name('survey');
 Route::post('/survey','SurveyController@store')->name('survey');

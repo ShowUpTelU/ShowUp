@@ -18,7 +18,7 @@ class UpdateUsers extends Migration
             $table->string('lastName');
             $table->integer('typeId')->default(1);
             $table->text('address');
-            $table->string('phone');
+            $table->string('phone')->unique();
             $table->string('photo')->default("avatar/avatar.png");
         });
     }

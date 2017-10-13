@@ -35,7 +35,10 @@ class BidController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result = Bid::create($request->all());
+        if($result){
+          return redirect(route('ads.show',['advertisement' => $request->advertisementId]));
+        }
     }
 
     /**

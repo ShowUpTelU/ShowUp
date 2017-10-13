@@ -17,6 +17,7 @@ class CreateBidsTable extends Migration
             $table->increments('id');
             $table->integer('userId')->unsigned();
             $table->integer('advertisementId')->unsigned();
+            $table->integer('price')->default(0)->unsigned();
             $table->text('note');
             $table->timestamps();
 

@@ -7,7 +7,7 @@
         <li><a href="{{route('ads.create')}}">Add new post</a></li>
         <li><a href="{{route('ads.index')}}">Show my posts</a></li>
       @endif
-      <li><a href="#!">Find Advertisers</a></li>
+      <li><a href="{{route('ads.all')}}">See Advertisements</a></li>
     </ul>
     <ul id="settings" class="dropdown-content">
       <li><a href="{{ route('profile')}}">Profile</a></li>
