@@ -3,12 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Bid;
 class Advertisement extends Model
 {
+  use SoftDeletes;
   protected $table = 'advertisements';
   protected $fillable = ['userId','title','desc','price'];
-
+  protected $dates = ['deleted_at'];
   public function AdsPhotos(){
     return $this->hasMany('App\AdvertisementPhoto','advertisementsId','id');
   }
