@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bid extends Model
 {
-    protected $fillable = ['userId','advertisementId','note'];
+    protected $fillable = ['userId','advertisementId','note','price'];
 
     public function Users(){
       return $this->belongsTo('App\User','userId','id');

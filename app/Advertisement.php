@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Bid;
+use App\Transaction;
 class Advertisement extends Model
 {
   use SoftDeletes;
@@ -20,15 +21,23 @@ class Advertisement extends Model
   }
 
   public function Bids(){
-    return $this->hasMany('App\Bid','id');
+    return $this->hasMany('App\Bid','advertisementId','id');
   }
 
-  public function checkBid($id){
-    $result = Bid::where('userId',$id)->first();
-    if($result){
-      return true;
-    }else {
-      return false;
-    }
+  public function checkBid($id,$adsId){
+    $result = Bid::where([
+      ['userId',$id],
+      ['AdvertisementId',$adsId]
+      ])->count();
+    return $result;
+    // if(isset($result)){
+    //   return 10;
+    // }else {
+    //   return 5;
+    // }
+  }
+
+  public function checkTransaction($id){
+    return Transaction::where('advertisementId',$id)->count();
   }
 }

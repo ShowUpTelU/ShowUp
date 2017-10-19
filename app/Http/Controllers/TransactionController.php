@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Transaction;
+use App\Bid;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -33,9 +34,16 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id)
     {
-        //
+      $bid = Bid::find($id);
+      Transaction::create([
+        'clientId' => $bid->userId,
+        'advertisementId' => $bid->advertisementId,
+        'price' => $bid->price,
+        'note' => $bid->note,
+      ]);
+      return redirect(route('ads.show',['ad'=>$bid->advertisementId]));
     }
 
     /**

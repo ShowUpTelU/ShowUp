@@ -9,7 +9,11 @@ class Transaction extends Model
 {
   use SoftDeletes;
   protected $table = 'transactions';
-  protected $fillable = ['clientId','businessId','status','price','confirmPhoto','note'];
+  protected $fillable = ['clientId','advertisementId','status','price','confirmPhoto','note'];
   public $timestamps = true;
   protected $dates = ['deleted_at'];
+
+  public function Users(){
+    return $this->belongsTo('App\User','clientId','id');
+  }
 }

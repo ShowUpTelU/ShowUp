@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Advertisement;
 use App\AdvertisementPhoto;
 use Illuminate\Http\Request;
+use App\Transaction;
 use Storage;
 use Auth;
 class AdvertisementController extends Controller
@@ -79,7 +80,8 @@ class AdvertisementController extends Controller
     public function show(Advertisement $ad)
     {
         return view('ads.detail',[
-          'data' => $ad
+          'data' => $ad->with('Bids')->find($ad->id),
+          'winner' => Transaction::where('advertisementId',$ad->id)->first()
         ]);
     }
 

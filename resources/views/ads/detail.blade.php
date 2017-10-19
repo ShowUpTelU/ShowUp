@@ -56,44 +56,66 @@
                 <th>Name</th>
                 <th>Note</th>
                 <th>Price</th>
+                @if ($data->checkTransaction($data->id) == 0)
                 <th>Action</th>
+                @endif
               </tr>
               @foreach ($data->Bids as $index => $row)
                 <tr>
                   <td>{{++$index}}</td>
-                  <td>{{$row->userId}}</td>
+                  <td><a href="{{$row->Users->Instagram->link}}" target="_blank">{{$row->Users->Instagram->accountName}}</a></td>
                   <td>{{$row->note}}</td>
-                  <td>{{$row->price}}</td>
-                  <td>
-                    <button type="button" class="btn green">Choose instagramer</button>
-                  </td>
+                  <td>Rp. {{number_format($row->price)}}</td>
+                  @if ($data->checkTransaction($data->id) == 0))
+                    <td>
+                      <a href="{{route('transaction.store',['id'=>$row->id])}}"><button type="button" class="btn green">Choose instagramer</button></a>
+                    </td>
+                  @endif
                 </tr>
               @endforeach
             </table>
+            @if ($winner)
+              <h5>The winner of bid</h5><hr>
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <th>Note</th>
+                  <th>Price</th>
+                </tr>
+                  <tr>
+                    <td><a href="{{$winner->Users->Instagram->link}}" target="_blank">{{$winner->Users->Instagram->accountName}}</a></td>
+                    <td>{{$winner->note}}</td>
+                    <td>Rp. {{number_format($winner->price)}}</td>
+                    <td>
+                  </tr>
+              </table>
+            @endif
           </div>
         </div>
-          <div class="row">
-            <div class="col l6">
-              <a href="{{route('ads.edit',['advertisement' => $data->id])}}"><button class="btn amber full-width">Edit this post</button></a>
+          @if (!$winner)
+            <div class="row">
+              <div class="col l6 s12">
+                <a href="{{route('ads.edit',['advertisement' => $data->id])}}"><button class="btn amber full-width">Edit this post</button></a>
+              </div>
+              <div class="col l6 s12">
+                <form action="{{route('ads.destroy',['advertisement' => $data->id])}}" method="post">
+                  <input type="hidden" name="_method" value="DELETE">
+                  {{ csrf_field() }}
+                  <button type="submit" class="btn red full-width">Delete this post</button>
+                </form>
+              </div>
             </div>
-            <div class="col l6">
-              {{-- <a href="{{route('ads.destroy',['advertisement' => $data->id])}}"><button class="btn red full-width">Delete this post</button></a> --}}
-              <form action="{{route('ads.destroy',['advertisement' => $data->id])}}" method="post">
-                <input type="hidden" name="_method" value="DELETE">
-                {{ csrf_field() }}
-                <button type="submit" class="btn red full-width">Delete this post</button>
-              </form>
-            </div>
-          </div>
+          @endif
         @else
-          @if ($data->checkBid(Auth::user()->id))
+          @if ($data->checkBid(Auth::user()->id,$data->id) > 0)
             <h5>Youre already set the bid.</h5>
           @else
+            {{-- START BID --}}
             <div class="row">
-              <div class="col l12">
+              <div class="col l12 s12">
                 <h5>Bid right now!</h5>
                 <hr>
-                <form class="col l12" action="{{route('bid.store')}}" method="post">
+                <form class="col l12 s12" action="{{route('bid.store')}}" method="post">
                   {{ csrf_field() }}
                   <input type="hidden" name="advertisementId" value="{{$data->id}}">
                   <input type="hidden" name="userId" value="{{Auth::user()->id}}">
@@ -116,6 +138,7 @@
                 </form>
               </div>
             </div>
+            {{-- END BID --}}
           @endif
         @endif
     </div>

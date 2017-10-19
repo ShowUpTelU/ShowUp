@@ -22,13 +22,17 @@ Route::post('/profile/{user}','UserController@update')->name('addProfile');
 //Instagram
 Route::resource('instagram','InstagramController');
 
-//Ads
+//Ad
 Route::resource('ads','AdvertisementController');
 Route::get('deletePhotoAds/{advertisementPhoto}','AdvertisementPhotoController@destroy')->name('deletePhotoAds');
 Route::get('adsAll','AdvertisementController@all')->name('ads.all');
 
 //Bid
 Route::resource('bid','BidController');
+
+//Transaction
+Route::get('/transaction/{id}','TransactionController@store')->name('transaction.store');
+
 // Survey
 Route::get('/survey','SurveyController@create')->name('survey');
 Route::post('/survey','SurveyController@store')->name('survey');
