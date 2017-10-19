@@ -37,7 +37,14 @@
             </div>
           </div>
           <div class="row">
-            <div class="file-field input-field">
+            <div class="file-field input-field col s6">
+              <input name="dueDate" id="dueDate" type="date" class="datepicker" required>
+              <label for="dueDate">Due Date</label>
+              @if ($errors->has('dueDate'))
+                  <small class="red-text">{{ $errors->first('dueDate') }}</small>
+              @endif
+            </div>
+            <div class="file-field input-field col s6">
               <div class="btn amber">
                 <span>Photos</span>
                 <input name="photos[]" type="file" multiple>
@@ -65,5 +72,14 @@
   $(document).ready(function() {
    $('select').material_select();
   });
+  $('.datepicker').pickadate({
+   selectMonths: true, // Creates a dropdown to control month
+   selectYears: 15, // Creates a dropdown of 15 years to control year,
+   today: 'Today',
+   clear: 'Clear',
+   close: 'Ok',
+   closeOnSelect: false, // Close upon selecting a date,
+   format: 'yyyy-mm-dd'
+ });
   </script>
 @endpush

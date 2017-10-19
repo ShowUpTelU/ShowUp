@@ -15,8 +15,8 @@ class UpdateUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('firstName');
-            $table->string('lastName');
-            $table->integer('typeId')->default(1);
+            $table->string('lastName')->nullable();
+            $table->integer('typeId')->default(1)->comment('0 = admin, 1 = user');
             $table->text('address');
             $table->string('phone')->unique();
             $table->string('photo')->default("avatar/avatar.png");

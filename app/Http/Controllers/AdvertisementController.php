@@ -51,13 +51,15 @@ class AdvertisementController extends Controller
           'title' => 'required|string|max:255',
           'price' => 'required|integer',
           'desc' => 'required',
-          'photos[]' => 'image'
+          'photos[]' => 'image',
+          'dueDate' => 'date'
         ]);
         $ads = Advertisement::create([
           'userId' => Auth::user()->id,
           'title' => $request->title,
           'price' => $request->price,
           'desc' => $request->desc,
+          'dueDate' => $request->dueDate
         ]);
         if ($request->photos) {
           foreach ($request->photos as $photo) {
@@ -119,6 +121,7 @@ class AdvertisementController extends Controller
       $ad->title = $request->title;
       $ad->price = $request->price;
       $ad->desc = $request->desc;
+      $ad->dueDate = $request->dueDate;
       $ad->save();
         return redirect()->route('ads.show',['advertisement' => $ad->id]);
     }

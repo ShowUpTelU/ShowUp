@@ -10,7 +10,7 @@ class Advertisement extends Model
 {
   use SoftDeletes;
   protected $table = 'advertisements';
-  protected $fillable = ['userId','title','desc','price'];
+  protected $fillable = ['userId','title','desc','price','dueDate'];
   protected $dates = ['deleted_at'];
   public function AdsPhotos(){
     return $this->hasMany('App\AdvertisementPhoto','advertisementsId','id');

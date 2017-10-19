@@ -27,6 +27,15 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
+            <input name="dueDate" id="dueDate" type="date" class="datepicker" value="{{$data->dueDate}}" disabled>
+            <label for="dueDate">Due Date</label>
+            @if ($errors->has('dueDate'))
+                <small class="red-text">{{ $errors->first('dueDate') }}</small>
+            @endif
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
             <textarea name="desc" id="desc" class="materialize-textarea" disabled>{{$data->desc}}</textarea>
             <label for="decs">Descriptions</label>
             @if ($errors->has('desc'))
@@ -150,5 +159,14 @@
   $(document).ready(function(){
     $('.materialboxed').materialbox();
   });
+  $('.datepicker').pickadate({
+   selectMonths: true, // Creates a dropdown to control month
+   selectYears: 15, // Creates a dropdown of 15 years to control year,
+   today: 'Today',
+   clear: 'Clear',
+   close: 'Ok',
+   closeOnSelect: false, // Close upon selecting a date,
+   format: 'yyyy-mm-dd'
+ });
   </script>
 @endpush
