@@ -14,7 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.accountAll',[
+          'data' => User::paginate(2)
+        ]);
     }
 
     /**

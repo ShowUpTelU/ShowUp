@@ -42,7 +42,7 @@
               <a class="collapsible-header white-text">Accounts<i class="material-icons white-text">arrow_drop_down</i></a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="#!">Show all users</a></li>
+                  <li><a href="{{route('account.index')}}">Show all users</a></li>
                 </ul>
               </div>
             </li>
