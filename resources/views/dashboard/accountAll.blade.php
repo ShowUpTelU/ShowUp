@@ -20,9 +20,7 @@
           </tr>
         @endforeach
       </table>
-      <ul class="pagination">
-       {{ $data->links() }}
-     </ul>
+       {{ $data->links('vendor.pagination.default') }}
 
     </div>
   </div>
