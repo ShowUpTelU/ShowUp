@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         return view('dashboard.accountAll',[
-          'data' => User::paginate(2)
+          'data' => User::paginate(25)
         ]);
     }
 
@@ -49,6 +49,13 @@ class UserController extends Controller
     public function show(User $user)
     {
         return view('auth.profile');
+    }
+
+    public function publicShow(User $user)
+    {
+        return view('dashboard.showAccount',[
+          'data' => $user
+        ]);
     }
 
     /**

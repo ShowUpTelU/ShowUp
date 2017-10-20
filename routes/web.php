@@ -19,6 +19,7 @@ Auth::routes();
 Route::get('/profile','UserController@edit')->name('profile');
 Route::post('/profile/{user}','UserController@update')->name('addProfile');
 Route::get('/account','UserController@index')->name('account.index');
+Route::get('/account/{user}','UserController@publicShow')->name('account.show');
 //Instagram
 Route::resource('instagram','InstagramController');
 

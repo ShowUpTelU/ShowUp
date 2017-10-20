@@ -16,7 +16,7 @@
             <td>{{++$key}}</td>
             <td>{{$row->firstName}} {{$row->lastName}}</td>
             <td><a href="{{$row->Instagram['link']}}" target="_blank">{{$row->Instagram['accountName']}}</a></td>
-            <td><button class="btn amber"><i class="material-icons left">details</i> detail</button></td>
+            <td><a href="{{route('account.show',['user' => $row->id])}}"><button class="btn amber"><i class="material-icons left">details</i> detail</button></a></td>
           </tr>
         @endforeach
       </table>
