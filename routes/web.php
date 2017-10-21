@@ -34,7 +34,7 @@ Route::resource('bid','BidController');
 
 //Transaction
 Route::get('/transaction/{id}','TransactionController@store')->name('transaction.store');
-
+Route::get('bidWinner','TransactionController@index')->name('transaction.index');
 // Survey
 Route::get('/survey','SurveyController@create')->name('survey');
 Route::post('/survey','SurveyController@store')->name('survey');

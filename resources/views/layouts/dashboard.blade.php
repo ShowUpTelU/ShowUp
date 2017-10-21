@@ -66,7 +66,7 @@
               <a class="collapsible-header white-text">Transaction<i class="material-icons white-text">arrow_drop_down</i></a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="#!">Choosen bids</a></li>
+                  <li><a href="{{route('transaction.index')}}">Choosen bids</a></li>
                   <li><a href="#!">Confirmation payments</a></li>
                   <li><a href="#!">Confirmation tasks</a></li>
                   <li><a href="#!">Finish transaction</a></li>

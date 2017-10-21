@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Transaction;
 use App\Bid;
 use Illuminate\Http\Request;
-
+use Auth;
 class TransactionController extends Controller
 {
     /**
@@ -15,7 +15,11 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+      if (Auth::user()->typeId == 0) {
+        return view('dashboard.bidAll',[
+          'data' => Transaction::all()
+        ]);
+      }
     }
 
     /**
