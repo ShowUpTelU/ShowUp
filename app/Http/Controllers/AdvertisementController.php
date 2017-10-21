@@ -24,9 +24,16 @@ class AdvertisementController extends Controller
 
     public function all()
     {
-      return view('ads.myAds',[
-        'data' => Advertisement::all()
-      ]);
+      if (Auth::user()->typeId == 0) {
+        return view('dashboard.advertisementAll',[
+          'data' => Advertisement::all()
+        ]);
+      }else{
+        return view('ads.myAds',[
+          'data' => Advertisement::all()
+        ]);
+      }
+
     }
 
     /**
@@ -81,10 +88,17 @@ class AdvertisementController extends Controller
      */
     public function show(Advertisement $ad)
     {
-        return view('ads.detail',[
-          'data' => $ad->with('Bids')->find($ad->id),
-          'winner' => Transaction::where('advertisementId',$ad->id)->first()
-        ]);
+        if (Auth::user()->typeId == 0) {
+          return view('dashboard.advertisementDetail',[
+            'data' => $ad->with('Bids')->find($ad->id),
+            'winner' => Transaction::where('advertisementId',$ad->id)->first()
+          ]);
+        }else{
+          return view('ads.detail',[
+            'data' => $ad->with('Bids')->find($ad->id),
+            'winner' => Transaction::where('advertisementId',$ad->id)->first()
+          ]);
+        }
     }
 
     /**

@@ -27,6 +27,7 @@ Route::resource('instagram','InstagramController');
 Route::resource('ads','AdvertisementController');
 Route::get('deletePhotoAds/{advertisementPhoto}','AdvertisementPhotoController@destroy')->name('deletePhotoAds');
 Route::get('adsAll','AdvertisementController@all')->name('ads.all');
+Route::get('adsDetail/{ad}','AdvertisementController@show')->name('ads.detail');
 
 //Bid
 Route::resource('bid','BidController');

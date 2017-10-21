@@ -54,7 +54,7 @@
               <a class="collapsible-header white-text">Advertisements<i class="material-icons white-text">arrow_drop_down</i></a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="#!">Show all advertisements</a></li>
+                  <li><a href="{{route('ads.all')}}">Show all advertisements</a></li>
                 </ul>
               </div>
             </li>
