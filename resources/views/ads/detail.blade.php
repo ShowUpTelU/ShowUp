@@ -77,7 +77,13 @@
                   <td>Rp. {{number_format($row->price)}}</td>
                   @if ($data->checkTransaction($data->id) == 0))
                     <td>
-                      <a href="{{route('transaction.store',['id'=>$row->id])}}"><button type="button" class="btn green">Choose instagramer</button></a>
+                      {{-- <a href="{{route('transaction.store',['id'=>$row->id])}}"><button type="button" class="btn green">Choose instagramer</button></a> --}}
+                      <form action="{{route('transaction.store')}}" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="bidId" value="{{$row->id}}">
+                        <input type="hidden" name="advertisementId" value="{{$row->advertisementId}}">
+                        <button type="submit" class="btn green">Choose instagramer</button>
+                      </form>
                     </td>
                   @endif
                 </tr>
@@ -88,15 +94,8 @@
               <table>
                 <tr>
                   <th>Name</th>
-                  <th>Note</th>
-                  <th>Price</th>
+                  <th><a href="{{$winner->Bid->Users->Instagram->link}}" target="_blank">{{$winner->Bid->Users->Instagram->accountName}}</a></th>
                 </tr>
-                  <tr>
-                    <td><a href="{{$winner->Users->Instagram->link}}" target="_blank">{{$winner->Users->Instagram->accountName}}</a></td>
-                    <td>{{$winner->note}}</td>
-                    <td>Rp. {{number_format($winner->price)}}</td>
-                    <td>
-                  </tr>
               </table>
             @endif
           </div>

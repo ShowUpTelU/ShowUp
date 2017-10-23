@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DeleteColumnTransaction extends Migration
+class RenameTransaction extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class DeleteColumnTransaction extends Migration
     public function up()
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->dropColumn(['price','confirmPhoto','note','status']);
+            $table->dropForeign(['clientId']);
+            $table->renameColumn('clientId', 'bidId');
+            $table->foreign('bidId')->references('id')->on('bids')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -26,10 +28,9 @@ class DeleteColumnTransaction extends Migration
     public function down()
     {
         Schema::table('transactions', function (Blueprint $table) {
-          $table->integer('price')->default(0);
-          $table->string('confirmPhoto')->nullable();
-          $table->text('note');
-          $table->integer('status')->default(0)->comment('0 = business paid, 1 = show up pay to client');
+            $table->dropForeign(['bidId']);
+            $table->renameColumn('bidId', 'clientId');
+            $table->foreign('clientId')->references('id')->on('bids')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 }

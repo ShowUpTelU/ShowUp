@@ -9,9 +9,9 @@
       @endif
       <li><a href="{{route('ads.all')}}">See Advertisements</a></li>
     </ul>
-    <ul id="order" class="dropdown-content">
-        <li><a href="{{route('ads.create')}}">My bids</a></li>
-        <li><a href="{{route('ads.index')}}">Transaction</a></li>
+    <ul id="transactions" class="dropdown-content">
+        <li><a href="{{route('transaction.checkout')}}">Need Transactions</a></li>
+        <li><a href="{{route('ads.index')}}">Done Transactions</a></li>
     </ul>
     <ul id="settings" class="dropdown-content">
       <li><a href="{{ route('profile')}}">Profile</a></li>
@@ -36,7 +36,7 @@
         <ul class="right hide-on-med-and-down">
           <li><a class="dropdown-button" href="#!" data-activates="ads">Advertisers <i class="material-icons right">arrow_drop_down</i></a></li>
           @if (Auth::user())
-          <li><a class="dropdown-button" href="#!" data-activates="order">Order <i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button" href="#!" data-activates="transactions">Transactions <i class="material-icons right">arrow_drop_down</i></a></li>
           @endif
           @if (Auth::id())
             <li><a class="dropdown-button" href="#!" data-activates="settings"><i class="material-icons">settings</i></a></li>

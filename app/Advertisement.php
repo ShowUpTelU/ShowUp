@@ -24,20 +24,23 @@ class Advertisement extends Model
     return $this->hasMany('App\Bid','advertisementId','id');
   }
 
+  public function Bid(){
+    return $this->hasOne('App\Bid','advertisementId','id');
+  }
+
   public function checkBid($id,$adsId){
     $result = Bid::where([
       ['userId',$id],
       ['AdvertisementId',$adsId]
       ])->count();
     return $result;
-    // if(isset($result)){
-    //   return 10;
-    // }else {
-    //   return 5;
-    // }
   }
 
   public function checkTransaction($id){
     return Transaction::where('advertisementId',$id)->count();
+  }
+
+  public function Transaction(){
+    return $this->hasOne('App\Transaction','advertisementId','id');
   }
 }

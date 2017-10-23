@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Transaction;
-use App\Bid;
-use App\Advertisement;
+use App\TransactionConfirmation;
 use Illuminate\Http\Request;
-use Auth;
-class TransactionController extends Controller
+
+class TransactionConfirmationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,18 +14,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-      if (Auth::user()->typeId == 0) {
-        return view('dashboard.bidAll',[
-          'data' => Transaction::all()
-        ]);
-      }
-    }
-
-    public function checkout(){
-      return $transaction = Advertisement::with('Transaction')->where('userId',Auth::user()->id)->get();
-      return view('transaction.checkout',[
-        'data' => $transaction
-      ]);
+        //
     }
 
     /**
@@ -48,17 +35,16 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-      Transaction::create($request->all());
-      return redirect(route('ads.show',['ad'=>$request->advertisementId]));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Transaction  $transaction
+     * @param  \App\TransactionConfirmation  $transactionConfirmation
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaction $transaction)
+    public function show(TransactionConfirmation $transactionConfirmation)
     {
         //
     }
@@ -66,10 +52,10 @@ class TransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Transaction  $transaction
+     * @param  \App\TransactionConfirmation  $transactionConfirmation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transaction $transaction)
+    public function edit(TransactionConfirmation $transactionConfirmation)
     {
         //
     }
@@ -78,10 +64,10 @@ class TransactionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Transaction  $transaction
+     * @param  \App\TransactionConfirmation  $transactionConfirmation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transaction $transaction)
+    public function update(Request $request, TransactionConfirmation $transactionConfirmation)
     {
         //
     }
@@ -89,10 +75,10 @@ class TransactionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Transaction  $transaction
+     * @param  \App\TransactionConfirmation  $transactionConfirmation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transaction $transaction)
+    public function destroy(TransactionConfirmation $transactionConfirmation)
     {
         //
     }

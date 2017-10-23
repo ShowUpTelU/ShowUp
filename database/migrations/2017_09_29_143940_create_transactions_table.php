@@ -18,7 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('clientId')->unsigned();
             $table->integer('businessId')->unsigned();
             $table->integer('price')->default(0);
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(0)->comment('0 = business paid, 1 = show up pay to client');
             $table->string('confirmPhoto')->nullable();
             $table->text('note');
             $table->timestamps();
