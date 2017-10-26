@@ -6,7 +6,7 @@
     <div class="col l12 s12">
       <div class="row">
         <div class="col l12 s12 center">
-          <h3>Checkout</h3>
+          <h3>Done</h3>
         </div>
       </div>
     </div>
@@ -21,16 +21,14 @@
           <th>Title</th>
           <th>Instagram</th>
           <th>Price</th>
-          <th>Action</th>
         </tr>
         @foreach ($data as $key => $row)
-          @if (!$row->Transaction->Confirmation->first())
+          @if ($row->Transaction->Confirmation->first()->type == 5)
             <tr>
               <td>{{++$key}}</td>
               <td><a href="{{route('ads.show',['id' => $row->id])}}">{{$row->title}}</a></td>
               <td><a href="{{$row->Transaction->Bid->Users->Instagram->link}}" target="_blank">{{$row->Transaction->Bid->Users->Instagram->accountName}}</a></td>
               <td>Rp. {{number_format($row->Transaction->Bid->price)}}</td>
-              <td><a href="{{route('confirmation.create',['confirmation' => $row->Transaction->id])}}"><button class="btn amber">Pay</button></a></td>
             </tr>
           @endif
         @endforeach

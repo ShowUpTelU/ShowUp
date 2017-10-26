@@ -67,9 +67,9 @@
               <div class="collapsible-body">
                 <ul>
                   <li><a href="{{route('transaction.index')}}">Choosen bids</a></li>
-                  <li><a href="#!">Confirmation payments</a></li>
-                  <li><a href="#!">Confirmation tasks</a></li>
-                  <li><a href="#!">Finish transaction</a></li>
+                  <li><a href="{{route('confirmation.index')}}">Confirmation payments</a></li>
+                  <li><a href="{{route('confirmation.task')}}">Confirmation tasks</a></li>
+                  <li><a href="{{route('confirmation.done')}}">Finish transaction</a></li>
                 </ul>
               </div>
             </li>

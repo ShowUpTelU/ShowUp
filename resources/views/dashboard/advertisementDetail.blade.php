@@ -95,10 +95,9 @@
                   <th>Price</th>
                 </tr>
                   <tr>
-                    <td><a href="{{$winner->Users->Instagram->link}}" target="_blank">{{$winner->Users->Instagram->accountName}}</a></td>
-                    <td>{{$winner->note}}</td>
-                    <td>Rp. {{number_format($winner->price)}}</td>
-                    <td>
+                    <td><a href="{{$winner->Bid->User->Instagram->link}}" target="_blank">{{$winner->Bid->User->Instagram->accountName}}</a></td>
+                    <td>{{$winner->Bid->note}}</td>
+                    <td>Rp. {{number_format($winner->Bid->price)}}</td>
                   </tr>
               </table>
             @endif

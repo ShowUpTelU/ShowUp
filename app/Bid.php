@@ -15,4 +15,8 @@ class Bid extends Model
     public function Advertisements(){
       return $this->belongsTo('App\Advertisement','AdvertisementId','id');
     }
+
+    public function Transaction(){
+      return $this->hasOne('App\Transaction','bidId','id');
+    }
 }

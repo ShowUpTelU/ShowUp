@@ -24,8 +24,15 @@ class TransactionController extends Controller
     }
 
     public function checkout(){
-      return $transaction = Advertisement::with('Transaction')->where('userId',Auth::user()->id)->get();
+      $transaction = Advertisement::has('Transaction')->where('userId',Auth::user()->id)->get();
       return view('transaction.checkout',[
+        'data' => $transaction
+      ]);
+    }
+
+    public function done(){
+      $transaction = Advertisement::has('Transaction.Confirmation')->where('userId',Auth::user()->id)->get();
+      return view('transaction.done',[
         'data' => $transaction
       ]);
     }

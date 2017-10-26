@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
           'password' => bcrypt('qwe123'),
           'firstName' => 'Admin',
           'lastName' => 'Show Up',
-          'typeId' => '0',
+          'typeId' => '2',
           'address' => 'Bandung',
           'phone' => '082219338123',
         ]);

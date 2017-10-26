@@ -21,5 +21,8 @@ class Transaction extends Model
     return $this->belongsTo('App\Advertisement','advertisementId','id');
   }
 
+  public function Confirmation(){
+    return $this->hasMany('App\TransactionConfirmation','transactionId','id');
+  }
 
 }

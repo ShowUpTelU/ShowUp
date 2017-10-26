@@ -1,10 +1,9 @@
 @extends('layouts.layout')
-
 @section('content')
 <div class="container-fluid full-height">
   <div class="row">
     <div class="col l7 hide-on-small-only full-height">
-      <img src="{{asset('img/logo-tagline.jpg')}}" class="responsive-img">
+      <img src="{{asset('img/logo-tagline.jpg')}}" style="max-height: 500px">
     </div>
     <div class="col l5 s12">
       <div class="row">

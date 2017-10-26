@@ -24,7 +24,7 @@ class AdvertisementController extends Controller
 
     public function all()
     {
-      if (Auth::user()->typeId == 0) {
+      if (isset(Auth::user()->typeId) == 2) {
         return view('dashboard.advertisementAll',[
           'data' => Advertisement::all()
         ]);
@@ -33,7 +33,6 @@ class AdvertisementController extends Controller
           'data' => Advertisement::all()
         ]);
       }
-
     }
 
     /**
