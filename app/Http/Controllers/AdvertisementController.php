@@ -87,7 +87,7 @@ class AdvertisementController extends Controller
      */
     public function show(Advertisement $ad)
     {
-        if (Auth::user()->typeId == 0) {
+        if (isset(Auth::user()->typeId) == 2) {
           return view('dashboard.advertisementDetail',[
             'data' => $ad->with('Bids')->find($ad->id),
             'winner' => Transaction::where('advertisementId',$ad->id)->first()

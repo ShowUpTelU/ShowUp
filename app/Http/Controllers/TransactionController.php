@@ -16,7 +16,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-      if (Auth::user()->typeId == 0) {
+      if (Auth::user()->typeId == 2) {
         return view('dashboard.bidAll',[
           'data' => Transaction::all()
         ]);
