@@ -21,7 +21,7 @@
             <div class="row">
               <div class="col l6 s12">
                 <h5 class="white-text">Show Up!</h5>
-                <p class="grey-text text-lighten-4">Up Everything You Want!</p>
+                <p class="grey-text text-lighten-4">Feel free to explore</p>
               </div>
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Contact Us</h5>

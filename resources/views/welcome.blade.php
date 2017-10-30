@@ -49,6 +49,18 @@
       <!-- END HEADER -->
 
       <!-- START CONTENT -->
+      <div class="container full-height valign-wrapper">
+        <div class="row">
+          <div class="col l5">
+            <img src="{{asset('img/landing-page/Picture2.png')}}" class="responsive-img">
+          </div>
+          <div class="col l7">
+            <p>As usual when a new business gets trouble in marketing. In fact, marketing is the most important thing in a business where good marketing can market their products. Besides that, there are Instagram users who have a lot of followers but don't utilize it for right things. In fact, have many followers can provide income for the owner of the account. With Show Up! we will benefit both of them.
+</p>
+          </div>
+        </div>
+      </div>
+
       <div id="about" class="container-fluid full-height green valign-wrapper section scrollspy">
         <div class="row">
           <div class="col l6 offset-l3 center">
@@ -60,7 +72,92 @@
         </div>
       </div>
 
-      <div id="target" class="container full-height center section scrollspy">
+      <div class="container-fluid full-height center">
+        <div class="row green-text">
+          <div class="col l3 s6">
+            <h3>Our Services</h3>
+            <hr>
+          </div>
+          <div class="col l3 s6">
+            <img src="{{asset('img/landing-page/services/branding.png')}}" class="responsive-img">
+          </div>
+          <div class="col l3 s6">
+            <img src="{{asset('img/landing-page/services/editvideo.png')}}" class="responsive-img">
+          </div>
+          <div class="col l3 s6">
+            <img src="{{asset('img/landing-page/services/portal.png')}}" class="responsive-img">
+          </div>
+          <div class="col l3 s6">
+            <img src="{{asset('img/landing-page/services/postads.png')}}" class="responsive-img">
+          </div>
+          <div class="col l3 s6">
+            <img src="{{asset('img/landing-page/services/editposter.png')}}" class="responsive-img">
+          </div>
+          <div class="col l3 s6">
+            <img src="{{asset('img/landing-page/services/profit.png')}}" class="responsive-img">
+          </div>
+          <div class="col l3 s6">
+            <img src="{{asset('img/landing-page/services/escrow.png')}}" class="responsive-img">
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid full-height center">
+        <div class="row">
+          <div class="col l12 s12 green-text">
+            <h3>Our Clients</h3>
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col l3 s12">
+            <img src="{{asset('img/landing-page/clients/business.png')}}" class="responsive-img">
+          </div>
+          <div class="col l3 s12">
+            <img src="{{asset('img/landing-page/clients/event.png')}}" class="responsive-img">
+          </div>
+          <div class="col l3 s12">
+            <img src="{{asset('img/landing-page/clients/instagram.png')}}" class="responsive-img">
+          </div>
+          <div class="col l3 s12">
+            <img src="{{asset('img/landing-page/clients/publicfigure.png')}}" class="responsive-img">
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid full-height center">
+        <div class="row">
+          <div class="col l12 green-text">
+            <h3>How we works</h3>
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col l4 s12">
+            <img src="{{asset('img/landing-page/works/1.png')}}" class="responsive-img">
+          </div>
+          <div class="col l4 s12">
+            <img src="{{asset('img/landing-page/works/2.png')}}" class="responsive-img">
+          </div>
+          <div class="col l4 s12">
+            <img src="{{asset('img/landing-page/works/3.png')}}" class="responsive-img">
+          </div>
+          </div>
+          <div class="row">
+            <div class="col l4 s12">
+              <img src="{{asset('img/landing-page/works/4.png')}}" class="responsive-img">
+            </div>
+            <div class="col l4 s12">
+              <img src="{{asset('img/landing-page/works/5.png')}}" class="responsive-img">
+            </div>
+            <div class="col l4 s12">
+              <img src="{{asset('img/landing-page/works/6.png')}}" class="responsive-img">
+            </div>
+            </div>
+        </div>
+      </div>
+
+      {{-- <div id="target" class="container full-height center section scrollspy">
         <div class="row">
           <div class="col l12 s12">
             <h3>Client</h3>
@@ -93,11 +190,11 @@
             <img src="{{asset('img/business.png')}}" class="responsive-img">
           </div>
         </div>
-      </div>
+      </div> --}}
 
       <div id="join" class="container-fluid green section scrollspy">
         <div class="row">
-          <div class="col l12 center" style="margin-top: 20px">
+          <div class="col l12 s12 center" style="margin-top: 20px">
             <a href="{{route('login')}}"><button class="btn btn-large amber">Start now for free</button></a>
           </div>
         </div>
