@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Advertisement;
 use App\AdvertisementPhoto;
 use Illuminate\Http\Request;
-use App\Transaction;
-use Storage;
 use Auth;
+use Storage;
+use Session;
 class AdvertisementController extends Controller
 {
     /**
@@ -17,22 +17,16 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        return view('ads.myAds',[
-          'data' => Advertisement::where('userId',Auth::user()->id)->get()
+        $result = Advertisement::paginate(9);
+        return view('ads.index',[
+          'data' => $result
         ]);
     }
 
-    public function all()
-    {
-      if (isset(Auth::user()->typeId) == 2) {
-        return view('dashboard.advertisementAll',[
-          'data' => Advertisement::all()
-        ]);
-      }else{
-        return view('ads.myAds',[
-          'data' => Advertisement::all()
-        ]);
-      }
+    public function myAds(){
+      return view('ads.index',[
+        'data' => Advertisement::where('userId',Auth::id())->paginate(9)
+      ]);
     }
 
     /**
@@ -55,28 +49,20 @@ class AdvertisementController extends Controller
     {
         $request->validate([
           'title' => 'required|string|max:255',
+          'desc' => 'required|string',
           'price' => 'required|integer',
-          'desc' => 'required',
-          'photos[]' => 'image',
-          'dueDate' => 'date'
+          'dueDate' => 'required|date'
         ]);
-        $ads = Advertisement::create([
-          'userId' => Auth::user()->id,
-          'title' => $request->title,
-          'price' => $request->price,
-          'desc' => $request->desc,
-          'dueDate' => $request->dueDate
-        ]);
-        if ($request->photos) {
-          foreach ($request->photos as $photo) {
-            $path = $photo->store('ads', 'public');
-            AdvertisementPhoto::create([
-              'advertisementsId' => $ads->id,
-              'path' => $path
-            ]);
-          }
+        $ads =  Advertisement::create($request->all());
+        foreach ($request->photos as $photo) {
+          $path = $photo->store('ads', 'public');
+          AdvertisementPhoto::create([
+            'advertisementId' => $ads->id,
+            'path' => $path
+          ]);
         }
-        return redirect()->route('ads.index');
+        $request->session()->flash('status', 'Create advertisement was successful!');
+        return redirect(route('home'));
     }
 
     /**
@@ -85,19 +71,11 @@ class AdvertisementController extends Controller
      * @param  \App\Advertisement  $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function show(Advertisement $ad)
+    public function show(Advertisement $advertisement)
     {
-        if (isset(Auth::user()->typeId) == 2) {
-          return view('dashboard.advertisementDetail',[
-            'data' => $ad->with('Bids')->find($ad->id),
-            'winner' => Transaction::where('advertisementId',$ad->id)->first()
-          ]);
-        }else{
-          return view('ads.detail',[
-            'data' => $ad->with('Bids')->find($ad->id),
-            'winner' => Transaction::where('advertisementId',$ad->id)->first()
-          ]);
-        }
+        return view('ads.show',[
+          'data' => $advertisement
+        ]);
     }
 
     /**
@@ -106,11 +84,9 @@ class AdvertisementController extends Controller
      * @param  \App\Advertisement  $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function edit(Advertisement $ad)
+    public function edit(Advertisement $advertisement)
     {
-        return view('ads.edit',[
-          'data' => $ad
-        ]);
+        //
     }
 
     /**
@@ -120,23 +96,24 @@ class AdvertisementController extends Controller
      * @param  \App\Advertisement  $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Advertisement $ad)
+    public function update(Request $request, Advertisement $advertisement)
     {
-      if ($request->photos) {
-        foreach ($request->photos as $photo) {
-          $path = $photo->store('ads', 'public');
-          AdvertisementPhoto::create([
-            'advertisementsId' => $ad->id,
-            'path' => $path
-          ]);
+        $advertisement->title = $request->title;
+        $advertisement->desc = $request->desc;
+        $advertisement->price = $request->price;
+        $advertisement->dueDate = $request->dueDate;
+        $advertisement->save();
+        if ($request->photos) {
+          foreach ($request->photos as $photo) {
+            $path = $photo->store('ads', 'public');
+            AdvertisementPhoto::create([
+              'advertisementId' => $advertisement->id,
+              'path' => $path
+            ]);
+          }
         }
-      }
-      $ad->title = $request->title;
-      $ad->price = $request->price;
-      $ad->desc = $request->desc;
-      $ad->dueDate = $request->dueDate;
-      $ad->save();
-        return redirect()->route('ads.show',['advertisement' => $ad->id]);
+        $request->session()->flash('status', 'Update advertisement was successful!');
+        return redirect()->route('advertisement.show',['advertisement' => $advertisement->id]);
     }
 
     /**
@@ -145,14 +122,14 @@ class AdvertisementController extends Controller
      * @param  \App\Advertisement  $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Advertisement $ad)
+    public function destroy(Advertisement $advertisement)
     {
-        if ($ad->AdsPhotos) {
-          foreach ($ad->AdsPhotos as $row) {
-            Storage::disk('public')->delete($row->path);
-          }
+        foreach ($advertisement->Photos as $photo) {
+          Storage::disk('public')->delete($photo->path);
+          $photo->delete();
         }
-        $ad->delete();
-        return redirect()->route('ads.index');
+        $advertisement->delete();
+        session()->flash('status', 'Delete advertisement was successful!');
+        return redirect(route('advertisement.mine'));
     }
 }

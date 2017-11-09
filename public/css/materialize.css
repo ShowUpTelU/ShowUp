@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.100.2 (http://materializecss.com)
+ * Materialize v0.100.1 (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -1092,11 +1092,11 @@
 }
 
 .green {
-  background-color: #4CAF50 !important;
+  background-color: #00A859 !important;
 }
 
 .green-text {
-  color: #4CAF50 !important;
+  color: #00A859 !important;
 }
 
 .green.lighten-5 {
@@ -3342,7 +3342,6 @@ nav ul a span.badge {
   margin-left: 4px;
   line-height: 22px;
   height: 22px;
-  -webkit-font-smoothing: auto;
 }
 
 .collection-item span.badge {
@@ -3350,7 +3349,7 @@ nav ul a span.badge {
 }
 
 .collapsible span.badge {
-  margin-left: auto;
+  margin-top: calc(1.5rem - 11px);
 }
 
 .side-nav span.badge {
@@ -6205,9 +6204,9 @@ input[type=search].valid:not(.browser-default),
 input[type=search].valid:not(.browser-default):focus,
 textarea.materialize-textarea.valid,
 textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
-  border-bottom: 1px solid #4CAF50;
-  -webkit-box-shadow: 0 1px 0 0 #4CAF50;
-          box-shadow: 0 1px 0 0 #4CAF50;
+  border-bottom: 1px solid #00A859;
+  -webkit-box-shadow: 0 1px 0 0 #00A859;
+          box-shadow: 0 1px 0 0 #00A859;
 }
 
 input.invalid:not([type]), input.invalid:not([type]):focus,
@@ -6267,7 +6266,7 @@ input[type=search]:not(.browser-default):focus.valid + label:after,
 textarea.materialize-textarea.valid + label:after,
 textarea.materialize-textarea:focus.valid + label:after, .select-wrapper.valid + label:after {
   content: attr(data-success);
-  color: #4CAF50;
+  color: #00A859;
   opacity: 1;
   -webkit-transform: translateY(9px);
           transform: translateY(9px);
@@ -6976,7 +6975,7 @@ select {
   height: 3rem;
 }
 
-.input-field > select {
+.input-field select {
   display: block;
   position: absolute;
   width: 0;
@@ -8178,7 +8177,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .slider .indicators .indicator-item.active {
-  background-color: #4CAF50;
+  background-color: #00A859;
 }
 
 .carousel {
@@ -8309,10 +8308,10 @@ input[type=range]:focus::-ms-fill-upper {
   visibility: visible;
   -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
           animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s;
+  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
 }
 
 .tap-target {
@@ -8365,10 +8364,10 @@ input[type=range]:focus::-ms-fill-upper {
 
 .tap-target-wave::after {
   visibility: hidden;
-  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s;
-  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
+  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility 0s;
+  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
   z-index: -1;
 }
 

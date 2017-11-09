@@ -1,19 +1,10 @@
-{{-- <ul class="pagination">
-   <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-   <li class="active"><a href="#!">1</a></li>
-   <li class="waves-effect"><a href="#!">2</a></li>
-   <li class="waves-effect"><a href="#!">3</a></li>
-   <li class="waves-effect"><a href="#!">4</a></li>
-   <li class="waves-effect"><a href="#!">5</a></li>
-   <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
- </ul> --}}
 @if ($paginator->hasPages())
     <ul class="pagination">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
-            <li class="disabled"><i class="material-icons">chevron_left</i></li>
+            <li class="disabled"><span>&laquo;</span></li>
         @else
-            <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev"><i class="material-icons">chevron_left</i></a></li>
+            <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">&laquo;</a></li>
         @endif
 
         {{-- Pagination Elements --}}
@@ -27,7 +18,7 @@
             @if (is_array($element))
                 @foreach ($element as $page => $url)
                     @if ($page == $paginator->currentPage())
-                        <li class="active green"><a>{{ $page }}</a></li>
+                        <li class="active blue"><a href="#!"><span>{{ $page }}</span></a></li>
                     @else
                         <li><a href="{{ $url }}">{{ $page }}</a></li>
                     @endif
@@ -37,9 +28,9 @@
 
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
-            <li><a href="{{ $paginator->nextPageUrl() }}" rel="next"><i class="material-icons">chevron_right</i></a></li>
+            <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">&raquo;</a></li>
         @else
-            <li class="disabled"><i class="material-icons">chevron_right</i></li>
+            <li class="disabled"><span>&raquo;</span></li>
         @endif
     </ul>
 @endif

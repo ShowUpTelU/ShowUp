@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Instagram;
 use Illuminate\Http\Request;
-use Auth;
+
 class InstagramController extends Controller
 {
     /**
@@ -24,9 +24,7 @@ class InstagramController extends Controller
      */
     public function create()
     {
-        return view('instagram.create',[
-          'data' => Instagram::where('userId',Auth::user()->id)->first()
-        ]);
+        //
     }
 
     /**
@@ -37,14 +35,7 @@ class InstagramController extends Controller
      */
     public function store(Request $request)
     {
-        Instagram::create([
-          'userId' => Auth::user()->id,
-          'accountName' => $request->account,
-          'followers' => $request->followers,
-          'link' => $request->link,
-          'active' => $request->active,
-        ]);
-        return redirect()->route('instagram.create');
+        //
     }
 
     /**
@@ -78,13 +69,7 @@ class InstagramController extends Controller
      */
     public function update(Request $request, Instagram $instagram)
     {
-        Instagram::find($instagram->id)->update([
-          'accountName' => $request->account,
-          'followers' => $request->followers,
-          'link' => $request->link,
-          'active' => $request->active,
-        ]);
-        return redirect()->route('instagram.create');
+        //
     }
 
     /**

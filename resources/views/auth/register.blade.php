@@ -73,18 +73,6 @@
             @endif
           </div>
         </div>
-        {{-- <div class="file-field input-field">
-          <div class="btn amber">
-            <i class="tiny material-icons">add_a_photo</i>
-            <input name="photo" type="file">
-          </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" placeholder="Photo" required>
-          </div>
-          @if ($errors->has('photo'))
-              <small class="red-text">{{ $errors->first('photo') }}</small>
-          @endif
-        </div> --}}
         <div class="row center">
           <div class="input-field col s12">
             <button type="submit" class="btn amber" style="width: 100%">Sign Up!</button>

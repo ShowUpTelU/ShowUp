@@ -13,26 +13,7 @@
 <body>
   <!-- START HEADER -->
   <header>
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper green">
-          <a href="#header" class="brand-logo"> <img src="{{asset('img/logo-app.png')}}" class="responsive-img nav-logo" style="padding-bottom: 10px"> </a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="{{route('index')}}">About</a></li>
-            <li><a href="{{route('index')}}">Target</a></li>
-            <li><a href="{{route('index')}}">Join</a></li>
-            <li><a href="{{route('survey')}}">Survey</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <ul class="side-nav" id="mobile-demo">
-      <li><a href="{{route('index')}}">About</a></li>
-      <li><a href="{{route('index')}}">Target</a></li>
-      <li><a href="{{route('index')}}">Join</a></li>
-      <li><a href="{{route('survey')}}">Survey</a></li>
-    </ul>
+    @include('layouts.navbar')
   </header>
   <div class="parallax-container section scrollspy"  id="header" class="">
     <div class="parallax "><img src="{{asset('img/header.png')}}"></div>

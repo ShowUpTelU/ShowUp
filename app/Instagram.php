@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Instagram extends Model
 {
-  protected $table = 'instagrams';
-  protected $fillable = ['userId','accountName','followers','link','active'];
+  protected $fillable = ['userId','link'];
   public $timestamps = false;
+
+  public function User(){
+    return $this->belongsTo('App\User','id','userId');
+  }
 }

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Transaction;
-use App\Bid;
-use App\Advertisement;
 use Illuminate\Http\Request;
-use Auth;
+use Session;
 class TransactionController extends Controller
 {
     /**
@@ -16,25 +14,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-      if (Auth::user()->typeId == 2) {
-        return view('dashboard.bidAll',[
-          'data' => Transaction::all()
-        ]);
-      }
-    }
-
-    public function checkout(){
-      $transaction = Advertisement::has('Transaction')->where('userId',Auth::user()->id)->get();
-      return view('transaction.checkout',[
-        'data' => $transaction
-      ]);
-    }
-
-    public function done(){
-      $transaction = Advertisement::has('Transaction.Confirmation')->where('userId',Auth::user()->id)->get();
-      return view('transaction.done',[
-        'data' => $transaction
-      ]);
+        //
     }
 
     /**
@@ -53,10 +33,14 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($bidId, $advertisementId)
     {
-      Transaction::create($request->all());
-      return redirect(route('ads.show',['ad'=>$request->advertisementId]));
+      Transaction::create([
+        'bidId' => $bidId,
+        'advertisementId' => $advertisementId,
+      ]);
+      session()->flash('status', 'Create transaction was successful!');
+      return redirect(route('advertisement.show',['advertisement' => $advertisementId]));
     }
 
     /**

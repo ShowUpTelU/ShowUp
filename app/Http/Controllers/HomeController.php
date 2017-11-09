@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -23,9 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->typeId == 2){
-          return view('dashboard.home');
-        }
         return view('home');
+    }
+
+    public function admin(){
+      return view('admin.home');
+    }
+
+    public function notAdmin(){
+      return view('notAdmin');
     }
 }

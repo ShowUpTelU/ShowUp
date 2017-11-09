@@ -1,5 +1,5 @@
 @component('mail::message')
-<center><img src="{{asset('img/logo_full.jpg')}}" style="width: 350px; height: 250px;"><br>
+<center><img src="{{asset('img/logo-tagline.png')}}" style="width: 350px; height: 250px;"><br>
   <p>Terima kasih telah berpartisipasi dalam pengisian survei pengguna kami. <br>
   Semoga apa yang anda isikan dapat menunjang kemajuan dalam menyediakan pelayanan prima dibidang portal advertise dan promote.</p>
 </center>

@@ -5,15 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Bid;
-use App\Transaction;
+use App\Advertisement;
 class Advertisement extends Model
 {
   use SoftDeletes;
-  protected $table = 'advertisements';
-  protected $fillable = ['userId','title','desc','price','dueDate'];
+  protected $fillable = ['userId','title','desc','status','price','dueDate'];
   protected $dates = ['deleted_at'];
-  public function AdsPhotos(){
-    return $this->hasMany('App\AdvertisementPhoto','advertisementsId','id');
+
+  public function Photos(){
+    return $this->hasMany('App\AdvertisementPhoto','advertisementId','id');
   }
 
   public function User(){
@@ -24,23 +24,21 @@ class Advertisement extends Model
     return $this->hasMany('App\Bid','advertisementId','id');
   }
 
-  public function Bid(){
-    return $this->hasOne('App\Bid','advertisementId','id');
-  }
-
-  public function checkBid($id,$adsId){
+  public function checkBid($adsId,$userId){
     $result = Bid::where([
-      ['userId',$id],
-      ['AdvertisementId',$adsId]
+      'userId' => $userId,
+      'advertisementId' => $adsId
       ])->count();
-    return $result;
+      if ($result >= 1) {
+        return 1;
+      }else{
+        return 0;
+      }
   }
 
-  public function checkTransaction($id){
-    return Transaction::where('advertisementId',$id)->count();
-  }
-
-  public function Transaction(){
+  public function Transaction()
+  {
     return $this->hasOne('App\Transaction','advertisementId','id');
   }
+
 }

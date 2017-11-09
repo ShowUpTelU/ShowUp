@@ -3,26 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transaction extends Model
 {
-  use SoftDeletes;
-  protected $table = 'transactions';
-  protected $fillable = ['bidId','advertisementId'];
-  public $timestamps = true;
-  protected $dates = ['deleted_at'];
+    protected $fillable = ['bidId','advertisementId','status','photo'];
 
-  public function Bid(){
-    return $this->belongsTo('App\Bid','bidId','id');
-  }
+    public function Advertisement()
+    {
+      return $this->belongsTo('App\Advertisement','advertisementId','id');
+    }
 
-  public function Ads(){
-    return $this->belongsTo('App\Advertisement','advertisementId','id');
-  }
-
-  public function Confirmation(){
-    return $this->hasMany('App\TransactionConfirmation','transactionId','id');
-  }
-
+    public function Bid(){
+      return $this->belongsTo('App\Bid','bidId','id');
+    }
 }

@@ -10,67 +10,54 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
-})->name('index');
-
-Route::get('/needAuth',function(){
-  return 'Youre not admin';
-})->name('needAuth');
-
-//Auth
+})->name('welcome');
+//PUBLIC
 Auth::routes();
-
-//public Ads
-Route::get('adsAll','AdvertisementController@all')->name('ads.all');
-Route::get('adsDetail/{ad}','AdvertisementController@show')->name('ads.detail');
-
+//Ads
+Route::resource('/advertisement','AdvertisementController');
+Route::get('notAdmin','HomeController@notAdmin')->name('notAdmin');
 // Survey
 Route::get('/survey','SurveyController@create')->name('survey');
 Route::post('/survey','SurveyController@store')->name('survey');
 Route::get('surveyResult','SurveyController@index')->name('survey.result');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::middleware('auth')->group(function () {
-  Route::get('/profile','UserController@edit')->name('profile');
-  Route::post('/profile/{user}','UserController@update')->name('addProfile');
-
-  //Instagram
-  Route::resource('instagram','InstagramController');
-
-  //Ad
-  Route::resource('ads','AdvertisementController');
-  Route::get('deletePhotoAds/{advertisementPhoto}','AdvertisementPhotoController@destroy')->name('deletePhotoAds');
-
+Route::group(['middleware' => ['auth']], function () {
+  //User
+  Route::get('/profile','UserController@edit')->name('user.edit');
+  Route::post('/profile','UserController@update')->name('user.update');
+  //Ads
+  Route::get('myAdvertisement','AdvertisementController@myAds')->name('advertisement.mine');
+  //Ads Photos
+  Route::get('/adsPhoto/delete/{id}','AdvertisementPhotoController@destroy')->name('adsPhoto.destroy');
   //Bid
-  Route::resource('bid','BidController');
+  Route::post('bid','BidController@store')->name('bid.store');
+  Route::get('bid/mine','BidController@mine')->name('bid.mine');
+  Route::get('bid/choosen','BidController@choosen')->name('bid.choosen');
+  Route::get('bid/confirmation','BidController@confirmation')->name('bid.confirmation');
+  Route::get('bid/ongoing','BidController@ongoing')->name('bid.ongoing');
+  Route::get('bid/done','BidController@done')->name('bid.done');
+
+  Route::post('bid/confirmation','BidController@updateConfirmation')->name('bid.updateConfirmation');
+  Route::get('bid/update/{id}/{status}','BidController@update')->name('bid.update');
 
   //Transaction
-  Route::post('/transaction/','TransactionController@store')->name('transaction.store');
+  Route::get('transaction/create/{bidId}/{advertisementId}','TransactionController@store')->name('transaction.store');
 
-  Route::get('/checkout','TransactionController@checkout')->name('transaction.checkout');
-  Route::get('transactionDone','TransactionController@done')->name('transaction.done');
-
-  //Transaction Confirmation
-  Route::get('confirmation/{confirmation}/detail','TransactionConfirmationController@create')->name('confirmation.create');
-  Route::post('confirmation/','TransactionConfirmationController@store')->name('confirmation.store');
-  Route::get('confirmationClient/{id}/{type}','TransactionConfirmationController@updateClient')->name('confirmation.updateClient');
-  Route::get('confirmationDone/','TransactionConfirmationController@showDone')->name('confirmation.done');
-
-  //Order
-  Route::get('myOrder','TransactionConfirmationController@showOrder')->name('order.myOrder');
-  Route::get('myOrder/accept','TransactionConfirmationController@showAccClient')->name('order.myAcc');
-  Route::get('myOrder/done','TransactionConfirmationController@showDoneClient')->name('order.done');
-
-
+  Route::get('/home', 'HomeController@index')->name('home');
 });
 
-Route::middleware('checkAdmin')->group(function () {
-  Route::get('bidWinner','TransactionController@index')->name('transaction.index')->middleware('checkAdmin');
-  Route::get('/account','UserController@index')->name('account.index');
-  Route::get('/account/{user}','UserController@publicShow')->name('account.show');
-  Route::get('confirmation/','TransactionConfirmationController@index')->name('confirmation.index');
-  Route::get('confirmationAdmin/{id}','TransactionConfirmationController@updateAdmin')->name('confirmation.updateAdmin');
-  Route::get('confirmationTask/','TransactionConfirmationController@showTask')->name('confirmation.task');
+Route::group(['middleware' => ['admin']], function () {
+  Route::get('admin','HomeController@admin')->name('home.admin');
+  //User
+  Route::get('list/users','UserController@index')->name('user.index');
+  //Advertisement
+  Route::get('list/advertisement','AdminController@advertisement')->name('admin.advertisement');
+  Route::get('list/advertisement/{advertisement}','AdminController@advertisementShow')->name('admin.advertisementShow');
+  //Bid
+  Route::get('list/bid/ongoing','AdminController@bidOngoing')->name('admin.bidOngoing');
+  Route::get('list/bid/pay','AdminController@bidPay')->name('admin.bidPay');
+  Route::get('list/bid/done','AdminController@bidDone')->name('admin.bidDone');
 });

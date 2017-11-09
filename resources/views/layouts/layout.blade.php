@@ -7,14 +7,23 @@
       <link type="text/css" rel="stylesheet" href="{{asset('css/materialize.min.css')}}"  media="screen,projection"/>
       <link rel="stylesheet" href="{{asset('css/style.css')}}">
       <title>Up Everything You Want!</title>
+      <!-- CSRF Token -->
+      <meta name="csrf-token" content="{{ csrf_token() }}">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      @yield('css')
+      @stack('css')
     </head>
-    <body>
-      @include('layouts.header')
-      @yield('content')
 
+    <body>
+      @auth
+        @include('layouts.navbar-auth')
+      @endauth
+
+      @guest
+        @include('layouts.navbar')
+      @endguest
+
+      @yield('content')
       <!-- START FOOTER -->
       <footer class="page-footer grey darken-3">
           <div class="container">
@@ -44,7 +53,7 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script type="text/javascript" src="{{asset('js/materialize.min.js')}}"></script>
       <script type="text/javascript">
-          $(".button-collapse").sideNav();
+        $(".button-collapse").sideNav();
       </script>
       @stack('js')
     </body>

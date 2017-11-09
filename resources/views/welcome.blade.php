@@ -14,26 +14,12 @@
     <body>
       <!-- START HEADER -->
       <header>
-        <div class="navbar-fixed">
-          <nav>
-            <div class="nav-wrapper green">
-              <a href="#header" class="brand-logo"> <img src="{{asset('img/logo-app.png')}}" class="responsive-img nav-logo" style="padding-bottom: 10px"> </a>
-              <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-              <ul class="right hide-on-med-and-down">
-                <li><a href="#about">About</a></li>
-                <li><a href="#target">Target</a></li>
-                <li><a href="#join">Join</a></li>
-                <li><a href="{{route('survey')}}">Survey</a></li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-        <ul class="side-nav" id="mobile-demo">
-          <li><a href="#about">About</a></li>
-          <li><a href="#target">Target</a></li>
-          <li><a href="#join">Join</a></li>
-          <li><a href="{{route('survey')}}">Survey</a></li>
-        </ul>
+        @guest
+          @include('layouts.navbar')
+        @endguest
+        @auth
+          @include('layouts.navbar-auth')
+        @endauth
       </header>
       <div class="parallax-container section scrollspy"  id="header" class="">
         <div class="parallax "><img src="{{asset('img/header.png')}}"></div>
@@ -66,7 +52,7 @@
           <div class="col l6 offset-l3 center">
             <img src="{{asset('img/white-logo.png')}}" class="responsive-img">
             <p class="white-text">Show Up! is headquartered in Indonesia where the Co-Founder Taufan, Yusuf, Niken are the pioneer of Show Up!.
-               Show Up! was founded in 23 August 2017 to help people advertise and promote everything they want to.
+               Show Up! was founded to help people advertise and promote everything they want to.
                 Besides that, Show Up! come with a unique concepts and appearances to get their goals.</p>
           </div>
         </div>
@@ -156,42 +142,6 @@
             </div>
         </div>
       </div>
-
-      {{-- <div id="target" class="container full-height center section scrollspy">
-        <div class="row">
-          <div class="col l12 s12">
-            <h3>Client</h3>
-            <hr>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col l6">
-            <img src="{{asset('img/client.png')}}" class="responsive-img">
-          </div>
-          <div class="col l6" style="margin-top: 10%">
-            <h5>Why Show Up! ?</h5>
-            <p>Discover everything you want to show up.
-               Get the unique atmosphere from anyone around the world</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col l12 s12">
-            <h3>Business</h3>
-            <hr>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col l6" style="margin-top: 10%">
-            <h5>What you get?</h5>
-            <p>Make your best choices to promote everything you want.
-               Get your easy payment, organizing, data security, content editor and also insight your profit.</p>
-          </div>
-          <div class="col l6">
-            <img src="{{asset('img/business.png')}}" class="responsive-img">
-          </div>
-        </div>
-      </div> --}}
-
       <div id="join" class="container-fluid green section scrollspy">
         <div class="row">
           <div class="col l12 s12 center" style="margin-top: 20px">

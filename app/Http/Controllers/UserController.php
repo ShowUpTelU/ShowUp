@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Instagram;
+use Auth;
 use Storage;
+use Session;
 class UserController extends Controller
 {
     /**
@@ -14,8 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('dashboard.accountAll',[
-          'data' => User::paginate(25)
+        return view('admin.user.index',[
+          'data' => User::where('typeId',1)->get()
         ]);
     }
 
@@ -46,16 +49,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show()
     {
-        return view('auth.profile');
-    }
-
-    public function publicShow(User $user)
-    {
-        return view('dashboard.showAccount',[
-          'data' => $user
-        ]);
+      return view('user.profile');
     }
 
     /**
@@ -66,7 +62,18 @@ class UserController extends Controller
      */
     public function edit()
     {
-        return view('auth.profile');
+        if(Auth::user()->typeId == 2){
+          return redirect(route('home.admin'));
+        }
+        $instagram = Instagram::where('userId',Auth::user()->id)->first();
+        if (!$instagram) {
+          $instagram = '';
+        }else{
+          $instagram = $instagram->link;
+        }
+        return view('user.profile',[
+          'instagram' => $instagram
+        ]);
     }
 
     /**
@@ -76,38 +83,48 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        //validator
-        $request->validate([
-          'firstName' => 'required|string|max:255',
-          'lastName' => 'required|string|max:255',
-          'email' => 'required|string|email|max:255',
-          'password' => 'required|string|min:6|confirmed',
-          'phone' => 'required|string|min:6',
-          'address' => 'required|string',
-          'photo' => 'image'
-        ]);
-        //photo
-        if($request->photo){
-          $path = $request->photo->store('avatar', 'public');
-          if ($user->photo != "avatar/avatar.png") {
-            Storage::disk('public')->delete($user->photo);
-          }
-        }else{
-          $path = $user->photo;
+      $request->validate([
+        'firstName' => 'required|string|max:255',
+        'lastName' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255',
+        'password' => 'required|string|min:6|confirmed',
+        'phone' => 'required|string|min:6',
+        'address' => 'required|string',
+        'photo' => 'image',
+        'instagram' => 'required|string'
+      ]);
+      if($request->photo){
+        $path = $request->photo->store('avatar', 'public');
+        if (Auth::user()->photo != "avatar/avatar.png") {
+          Storage::disk('public')->delete(Auth::user()->photo);
         }
-        //update data
-        User::find($user->id)->update([
-          'firstName' => $request->firstName,
-          'lastName' => $request->lastName,
-          'email' => $request->email,
-          'password' => bcrypt($request->password),
-          'address' => $request->address,
-          'phone' => $request->phone,
-          'photo' => $path
+      }else{
+        $path = Auth::user()->photo;
+      }
+      $result = User::find(Auth::user()->id)->update([
+        'firstName' => $request->firstName,
+        'lastName' => $request->lastName,
+        'email' => $request->email,
+        'password' => bcrypt($request->password),
+        'address' => $request->address,
+        'phone' => $request->phone,
+        'photo' => $path
+      ]);
+
+      $instagram = Instagram::where('userId',Auth::user()->id)->first();
+      if (!$instagram) {
+        Instagram::create([
+          'userId' => Auth::user()->id,
+          'link' => $request->instagram
         ]);
-        return redirect()->route('profile');
+      }else{
+        $instagram->link = $request->instagram;
+        $instagram->save();
+      }
+      $request->session()->flash('status', 'Update was successful!');
+      return redirect(route('home'));
     }
 
     /**
