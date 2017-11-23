@@ -1,7 +1,12 @@
 @extends('layouts.layout')
 @section('content')
 <div class="container-fluid">
-  <div class="row full-height">
+  <div class="row">
+    <div class="col l12">
+      <h4>Advertisement Lists</h4>
+    </div>
+  </div>
+  <div class="row">
     @foreach ($data as $row)
       <div class="col l4 s12">
         <div class="card">

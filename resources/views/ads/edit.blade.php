@@ -39,7 +39,7 @@
           </div>
           <div class="row">
             <div class="file-field input-field col s6">
-              <input name="dueDate" id="dueDate" type="date" class="datepicker" value="{{$data->dueDate}}" required>
+              <input name="dueDate" id="dueDate" type="number" value="{{$data->dueDate}}" required>
               <label for="dueDate">Due Date</label>
               @if ($errors->has('dueDate'))
                   <small class="red-text">{{ $errors->first('dueDate') }}</small>

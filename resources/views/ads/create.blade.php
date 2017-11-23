@@ -25,14 +25,14 @@
       </div>
       <div class="input-field col l6 s12">
         <input type="number" name="price" id="price" class="validate" required>
-        <label for="price">Price</label>
+        <label for="price">Price per Instagram</label>
         @if ($errors->has('price'))
             <small class="red-text">{{ $errors->first('price') }}</small>
         @endif
       </div>
       <div class="input-field col l6 s12">
-        <input type="date" name="dueDate" id="dueDate" class="datepicker" required>
-        <label for="dueDate">Due Date</label>
+        <input type="number" name="dueDate" id="dueDate" required>
+        <label for="dueDate">Day</label>
         @if ($errors->has('dueDate'))
             <small class="red-text">{{ $errors->first('dueDate') }}</small>
         @endif

@@ -29,14 +29,14 @@
           <td>{{$data->desc}}</td>
         </tr>
         <tr>
-          <td>Price</td>
+          <td>Price per User</td>
           <td>Rp. {{number_format($data->price)}}</td>
         </tr>
         <tr>
           <td>Status</td>
           <td>
             @if ($data->status == 0)
-              Ready
+              Open to bid
             @elseif ($data->status == 1)
               On Going
             @else
@@ -50,7 +50,7 @@
         </tr>
         <tr>
           <td>Due Date</td>
-          <td>{{$data->dueDate}}</td>
+          <td>{{$data->dueDate}} Days</td>
         </tr>
       </table>
     </div>
@@ -60,68 +60,43 @@
           <div class="card">
             <div class="card-image">
               <img src="{{url('storage/'.$row->path)}}">
-              <a href="{{route('adsPhoto.destroy',['id' => $row->id])}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
+              @if ($data->userId == Auth::id())
+                <a href="{{route('adsPhoto.destroy',['id' => $row->id])}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
+              @endif
             </div>
           </div>
         </div>
       </div>
-      {{-- <div class="col l4 s12">
-        <img src="{{url('storage/'.$row->path)}}" class="materialboxed">
-        @if ($data->userId == Auth::id())
-          <a href="{{route('adsPhoto.destroy',['id' => $row->id])}}"><button class="btn red"><i class="material-icons">delete</i></button></a>
-        @endif
-      </div> --}}
     @endforeach
   </div>
   <div class="row">
     <h5>List of bidders</h5>
     <ul class="collection">
-      @foreach ($data->Bids as $row)
-        <li class="collection-item avatar">
-          <img src="{{url('storage/'.$row->User->photo)}}" alt="" class="circle">
-          <span class="title">{{$row->User->firstName}}</span>
-          <p>Rp. {{number_format($row->price)}} <br>
-             {{$row->note}}
-          </p>
-          @if (isset($data->Transaction))
-            @if ($data->Transaction->bidId == $row->id)
-              <td>Choosen</td>
-            @else
-              <td></td>
+      <form action="{{route('transaction.store')}}" method="post">
+        {{ csrf_field() }}
+        <input type="hidden" name="advertisementId" value="{{$data->id}}">
+        @foreach ($data->Bids as $row)
+          <li class="collection-item avatar">
+            <img src="{{url('storage/'.$row->User->photo)}}" alt="" class="circle">
+            <span class="title">{{$row->User->firstName}} {{$row->User->lastName}}</span>
+            <p>Instagram : <a href="{{$row->User->Instagram->link}}" target="_blank">{{$row->User->Instagram->link}}</a> </p>
+            @if (isset($data->Transaction))
+              @if ($row->choosen == 1)
+                <td>Choosen</td>
+              @else
+                <td></td>
+              @endif
+            @elseif ($data->userId == Auth::id())
+                <div class="secondary-content">
+                  <input type="checkbox" name="Bids[]" value="{{$row->id}}" class="filled-in" id="filled-in-box-{{$row->id}}" />
+                  <label for="filled-in-box-{{$row->id}}">Choose Influencer</label>
+                </div>
             @endif
-          @elseif ($data->userId == Auth::id())
-              <td><a href="{{route('transaction.store',['bidId' => $row->id,'advertisementId' => $data->id])}}"  class="secondary-content"><button class="btn green"><i class="material-icons">check</i></button></a></td>
-          @endif
-          {{-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> --}}
-        </li>
-      @endforeach
+          </li>
+        @endforeach
+        <button class="btn green">Submit Influencer</button>
+      </form>
     </ul>
-    {{-- <table class="table bordered">
-      <tr>
-        <th>No.</th>
-        <th>Account</th>
-        <th>Price</th>
-        <th>Note</th>
-        <th>Choose</th>
-      </tr>
-      @foreach ($data->Bids as $index => $row)
-        <tr>
-          <td>{{++$index}}</td>
-          <td><a href="{{$row->User->Instagram->link}}" target="_blank">{{$row->User->firstName}} {{$row->User->lastName}}</a></td>
-          <td>Rp. {{number_format($row->price)}}</td>
-          <td>{{$row->note}}</td>
-          @if (isset($data->Transaction))
-            @if ($data->Transaction->bidId == $row->id)
-              <td>Choosen</td>
-            @else
-              <td></td>
-            @endif
-          @elseif ($data->userId == Auth::id())
-              <td><a href="{{route('transaction.store',['bidId' => $row->id,'advertisementId' => $data->id])}}"><button class="btn green"><i class="material-icons">check</i></button></a></td>
-          @endif
-        </tr>
-      @endforeach
-    </table> --}}
   </div>
   {{-- START USER ACCESS --}}
   @if ($data->userId == Auth::id())
@@ -163,20 +138,9 @@
             {{ csrf_field() }}
             <input type="hidden" name="userId" value="{{Auth::id()}}">
             <input type="hidden" name="advertisementId" value="{{$data->id}}">
-            <div class="input-field col l12">
-              <input type="number" name="price" id="price" class="validate" required>
-              <label for="price">Bid Price</label>
-              @if ($errors->has('price'))
-                  <small class="red-text">{{ $errors->first('price') }}</small>
-              @endif
-            </div>
-            <div class="input-field col l12 s12">
-              <textarea name="note" class="materialize-textarea" id="note" required></textarea>
-              <label for="note">Note</label>
-              @if ($errors->has('note'))
-                  <small class="red-text">{{ $errors->first('note') }}</small>
-              @endif
-            </div>
+            <p>
+              Are you sure to take this post?
+            </p>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn blue">Save</button>
@@ -253,15 +217,6 @@
   $(document).ready(function(){
     $('.materialboxed').materialbox();
     $('.modal').modal();
-    $('.datepicker').pickadate({
-     selectMonths: true, // Creates a dropdown to control month
-     selectYears: 15, // Creates a dropdown of 15 years to control year,
-     today: 'Today',
-     clear: 'Clear',
-     close: 'Ok',
-     closeOnSelect: false, // Close upon selecting a date,
-     format: 'yyyy-mm-dd'
-   });
   });
   </script>
 @endpush

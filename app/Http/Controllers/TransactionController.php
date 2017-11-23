@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Transaction;
+use App\Bid;
+use App\Advertisement;
 use Illuminate\Http\Request;
 use Session;
 class TransactionController extends Controller
@@ -33,14 +35,23 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($bidId, $advertisementId)
+    public function store(Request $request)
     {
-      Transaction::create([
-        'bidId' => $bidId,
-        'advertisementId' => $advertisementId,
+      $numBids = count($request->Bids);
+      foreach ($request->Bids as $bid) {
+        $tempBid = Bid::find($bid);
+        $tempBid->choosen = 1;
+        $tempBid->save();
+      }
+      $ads = Advertisement::find($request->advertisementId);
+      $ads->status = 1;
+      $ads->save();
+      $transaction = Transaction::create([
+        'advertisementId' => $request->advertisementId,
+        'price' => $ads->price * $numBids
       ]);
       session()->flash('status', 'Create transaction was successful!');
-      return redirect(route('advertisement.show',['advertisement' => $advertisementId]));
+      return redirect(route('advertisement.show',['advertisement' => $request->advertisementId]));
     }
 
     /**

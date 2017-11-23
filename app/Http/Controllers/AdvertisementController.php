@@ -50,8 +50,8 @@ class AdvertisementController extends Controller
         $request->validate([
           'title' => 'required|string|max:255',
           'desc' => 'required|string',
-          'price' => 'required|integer',
-          'dueDate' => 'required|date'
+          'price' => 'required|integer|min:0',
+          'dueDate' => 'required|integer|min:0'
         ]);
         $ads =  Advertisement::create($request->all());
         foreach ($request->photos as $photo) {

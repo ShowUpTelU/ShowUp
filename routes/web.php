@@ -44,7 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('bid/update/{id}/{status}','BidController@update')->name('bid.update');
 
   //Transaction
-  Route::get('transaction/create/{bidId}/{advertisementId}','TransactionController@store')->name('transaction.store');
+  Route::resource('/transaction','TransactionController');
 
   Route::get('/home', 'HomeController@index')->name('home');
 });
