@@ -57,8 +57,9 @@ Route::group(['middleware' => ['admin']], function () {
   Route::get('list/advertisement/{advertisement}','AdminController@advertisementShow')->name('admin.advertisementShow');
   //Bid
   Route::get('list/bid/ongoing','AdminController@bidOngoing')->name('admin.bidOngoing');
-  Route::get('list/bid/pay','AdminController@bidPay')->name('admin.bidPay');
   Route::get('list/bid/done','AdminController@bidDone')->name('admin.bidDone');
+  Route::get('list/bid/paid','AdminController@bidPaid')->name('admin.bidPaid');
+  Route::put('list/bid/pay/{bid}','AdminController@bidPay')->name('admin.bidPay');
   //Transaction
   Route::get('list/transaction/unpaid','AdminController@transactionUnpaid')->name('admin.transactionUnpaid');
   Route::get('list/transaction/confirmation','AdminController@transactionConfirmation')->name('admin.transactionConfirmation');

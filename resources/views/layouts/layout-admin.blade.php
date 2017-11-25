@@ -48,6 +48,18 @@
         </ul>
         <ul class="collapsible collapsible-accordion">
           <li>
+            <a class="collapsible-header">Bid<i class="material-icons">arrow_drop_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="{{route('admin.bidOngoing')}}">Bid ongoing</a></li>
+                <li><a href="{{route('admin.bidDone')}}">Bid done</a></li>
+                <li><a href="{{route('admin.bidPaid')}}">Bid paid</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <ul class="collapsible collapsible-accordion">
+          <li>
             <a class="collapsible-header">Transaction<i class="material-icons">arrow_drop_down</i></a>
             <div class="collapsible-body">
               <ul>
@@ -58,18 +70,6 @@
             </div>
           </li>
         </ul>
-        {{-- <ul class="collapsible collapsible-accordion">
-          <li>
-            <a class="collapsible-header">Bid<i class="material-icons">arrow_drop_down</i></a>
-            <div class="collapsible-body">
-              <ul>
-                <li><a href="{{route('admin.bidOngoing')}}">Bid ongoing</a></li>
-                <li><a href="{{route('admin.bidPay')}}">Bid pay</a></li>
-                <li><a href="{{route('admin.bidDone')}}">Bid done</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul> --}}
       </ul>
       <div class="container-fluid">
         <div class="row">

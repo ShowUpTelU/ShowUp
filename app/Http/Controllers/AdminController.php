@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Advertisement;
 use App\Transaction;
+use App\Bid;
 class AdminController extends Controller
 {
     public function advertisement(){
@@ -19,28 +20,45 @@ class AdminController extends Controller
       ]);
     }
 
-    public function bidDone(){
-      return view('admin.bid.pay',[
-        'title' => 'Bid done',
-        'action' => '',
-        'data' => Transaction::where('status',4)->get()
-      ]);
-    }
-
-    public function bidPay(){
-      return view('admin.bid.pay',[
-        'title' => 'Bid pay',
-        'action' => 'Set to paid',
-        'data' => Transaction::where('status',3)->get()
-      ]);
-    }
-
     public function bidOngoing(){
       return view('admin.bid.pay',[
         'title' => 'Bid ongoing',
         'action' => '',
-        'data' => Transaction::where('status',2)->get()
+        'data' => Bid::where([
+          ['choosen',1],
+          ['done',0]
+          ])->get()
       ]);
+    }
+
+    public function bidDone(){
+      return view('admin.bid.pay',[
+        'title' => 'Bid done',
+        'action' => 'Pay',
+        'data' => Bid::where([
+          ['choosen',1],
+          ['done',1],
+          ['paid',0]
+          ])->get()
+      ]);
+    }
+
+    public function bidPaid(){
+      return view('admin.bid.pay',[
+        'title' => 'Bid done',
+        'action' => '',
+        'data' => Bid::where([
+          ['choosen',1],
+          ['done',1],
+          ['paid',1]
+          ])->get()
+      ]);
+    }
+
+    public function bidPay(Bid $bid){
+      $bid->paid = 1;
+      $bid->save();
+      return redirect(route('admin.bidPaid'));
     }
 
     public function transactionUnpaid(){

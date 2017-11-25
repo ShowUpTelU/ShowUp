@@ -15,11 +15,15 @@
         <tr>
           <td>{{++$index}}</td>
           <td><a href="{{route('admin.advertisementShow',['advertisement' => $row->Advertisement->id])}}">{{$row->Advertisement->title}}</a></td>
-          <td><a href="{{$row->Bid->User->Instagram->link}}" target="_blank">{{$row->Bid->User->firstName}} {{$row->Bid->User->lastName}}</a></td>
-          <td>Rp. {{number_format($row->Bid->price)}}</td>
-          @if ($row->status == 3)
+          <td><a href="{{$row->User->Instagram->link}}" target="_blank">{{$row->User->firstName}} {{$row->User->lastName}}</a></td>
+          <td>Rp. {{number_format($row->Advertisement->price)}}</td>
+          @if ($action)
             <td>
-              <a href="{{route('bid.update',['id' => $row->id,'status' => 4])}}"><button class="btn blue"><i class="material-icons">payment</i></button></a>
+              <form class="" action="{{route('admin.bidPay',['bid' => $row->id])}}" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="_method" value="PUT">
+                <button type="submit" class="btn blue"><i class="material-icons">payment</i></button>
+              </form>
             </td>
           @endif
         </tr>
