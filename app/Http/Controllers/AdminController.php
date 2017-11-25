@@ -42,4 +42,35 @@ class AdminController extends Controller
         'data' => Transaction::where('status',2)->get()
       ]);
     }
+
+    public function transactionUnpaid(){
+      return view('admin.transaction.paid',[
+        'data' => Transaction::where('paid',0)->get(),
+        'title' => "Unpaid Transactions",
+        'confirmation' => 0
+      ]);
+    }
+
+    public function transactionConfirmation(){
+      return view('admin.transaction.paid',[
+        'data' => Transaction::where('paid',1)->get(),
+        'title' => "Confirmation Transactions",
+        'confirmation' => 1
+      ]);
+    }
+
+    public function transactionPaid(){
+      return view('admin.transaction.paid',[
+        'data' => Transaction::where('paid',2)->get(),
+        'title' => "Paid Transactions",
+        'confirmation' => 0
+      ]);
+    }
+
+    public function transactionPaidUpdate(Request $request){
+      $transaction = Transaction::find($request->advertisementId);
+      $transaction->paid = 2;
+      $transaction->save();
+      return redirect(route('admin.transactionPaid'));
+    }
 }

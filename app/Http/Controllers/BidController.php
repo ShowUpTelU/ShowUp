@@ -22,21 +22,15 @@ class BidController extends Controller
         //
     }
 
-    public function mine()
+    public function waiting()
     {
       return view('bid.index',[
         'title' => 'Bids',
         'bid' => 1,
-        'data' => Bid::where('userId',Auth::id())->get()
-      ]);
-    }
-
-    public function choosen()
-    {
-      return view('bid.index',[
-        'title' => 'Bids Choosen',
-        'action' => 'Get the task',
-        'data' => Transaction::has('Bid.User')->where('status',0)->get()
+        'data' => Bid::where([
+          ['userId',Auth::id()],
+          ['choosen',0]
+          ])->get()
       ]);
     }
 
@@ -52,29 +46,32 @@ class BidController extends Controller
     public function ongoing()
     {
       return view('bid.index',[
-        'title' => 'Bids Ongoing',
-        'action' => 'Set to done',
-        'data' => Transaction::has('Bid.User')->where('status',2)->get()
+        'title' => 'Ongoing Bids',
+        'data' => Bid::where([
+          ['userId',Auth::id()],
+          ['choosen',1],
+          ['done',0]
+          ])->get()
       ]);
     }
 
     public function done()
     {
       return view('bid.index',[
-        'title' => 'Bids Done',
-        'action' => '',
-        'data' => Transaction::has('Bid.User')->where('status',4)->get()
+        'title' => 'Done Bids',
+        'bid' => 1,
+        'done' => 1,
+        'data' => Bid::where([
+          ['userId',Auth::id()],
+          ['done',1]
+          ])->get()
       ]);
     }
 
-    public function updateConfirmation(Request $request){
-      $path = $request->photo->store('confirmation', 'public');
-      $trans = Transaction::find($request->id);
-      $trans->status = 2;
-      $trans->photo = $path;
-      $trans->save();
-      $request->session()->flash('status', 'Update bid status was successful!');
-      return redirect(route('bid.confirmation'));
+    public function setDone(Bid $bid){
+      $bid->done = 1;
+      $bid->save();
+      return redirect(route('bid.done'));
     }
 
     /**
@@ -131,18 +128,6 @@ class BidController extends Controller
      */
     public function update($id, $status)
     {
-      $trans = Transaction::find($id);
-      $trans->status = $status;
-      $trans->save();
-      if ($status == 2) {
-        return redirect(route('bid.choosen'));
-      }elseif($status == 3){
-        return redirect(route('bid.ongoing'));
-      }elseif($status == 4){
-        return redirect(route('admin.bidPay'));
-      }else{
-        return redirect(route('home'));
-      }
 
     }
 

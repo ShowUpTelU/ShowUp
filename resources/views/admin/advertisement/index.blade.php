@@ -15,8 +15,8 @@
         <tr>
           <td>{{++$index}}</td>
           <td>{{$row->title}}</td>
-          <td>{{$row->price}}</td>
-          <td>{{$row->dueDate}}</td>
+          <td>Rp. {{number_format($row->price)}}</td>
+          <td>{{$row->dueDate}} Days</td>
           <td><a href="{{route('admin.advertisementShow',['advertisement' => $row->id])}}"><button class="btn blue"><i class="material-icons">zoom_out_map</i></button></a></td>
         </tr>
       @endforeach

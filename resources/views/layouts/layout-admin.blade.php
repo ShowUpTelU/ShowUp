@@ -32,8 +32,8 @@
             {{-- <img src="{{url('storage/'.Auth::user()->photo)}}"> --}}
           </div>
           <a href="#!user"><img class="circle" src="{{url('storage/'.Auth::user()->photo)}}"></a>
-          <a href="#!name"><span class="white-text name">{{Auth::user()->firstName}} {{Auth::user()->lastName}}</span></a>
-          <a href="#!email"><span class="white-text email">{{Auth::user()->email}}</span></a>
+          <span class="white-text name">{{Auth::user()->firstName}} {{Auth::user()->lastName}}</span>
+          <span class="white-text email">{{Auth::user()->email}}</span>
         </div></li>
         <li><a href="{{route('user.index')}}"><i class="material-icons">people</i>Users</a></li>
         <ul class="collapsible collapsible-accordion">
@@ -48,6 +48,18 @@
         </ul>
         <ul class="collapsible collapsible-accordion">
           <li>
+            <a class="collapsible-header">Transaction<i class="material-icons">arrow_drop_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="{{route('admin.transactionUnpaid')}}">Unpaid Transaction</a></li>
+                <li><a href="{{route('admin.transactionConfirmation')}}">Confirmation Transaction</a></li>
+                <li><a href="{{route('admin.transactionPaid')}}">Paid Transaction</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        {{-- <ul class="collapsible collapsible-accordion">
+          <li>
             <a class="collapsible-header">Bid<i class="material-icons">arrow_drop_down</i></a>
             <div class="collapsible-body">
               <ul>
@@ -57,7 +69,7 @@
               </ul>
             </div>
           </li>
-        </ul>
+        </ul> --}}
       </ul>
       <div class="container-fluid">
         <div class="row">

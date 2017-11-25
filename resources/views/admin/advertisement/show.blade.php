@@ -44,39 +44,34 @@
 </div>
 <div class="row">
   @foreach ($data->Photos as $row)
-    <div class="col l4 s12">
-      <img src="{{url('storage/'.$row->path)}}" class="materialboxed">
-      @if ($data->userId == Auth::id())
-        <a href="{{route('adsPhoto.destroy',['id' => $row->id])}}"><button class="btn red"><i class="material-icons">delete</i></button></a>
-      @endif
+    <div class="col s12 m6 l4">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{url('storage/'.$row->path)}}">
+            <a href="{{route('adsPhoto.destroy',['id' => $row->id])}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
+        </div>
+      </div>
     </div>
   @endforeach
 </div>
 <div class="row">
   <h5>List of bidders</h5>
-  <table class="table bordered">
-    <tr>
-      <th>No.</th>
-      <th>Account</th>
-      <th>Price</th>
-      <th>Note</th>
-      <th>Choose</th>
-    </tr>
-    @foreach ($data->Bids as $index => $row)
-      <tr>
-        <td>{{++$index}}</td>
-        <td><a href="{{$row->User->Instagram->link}}" target="_blank">{{$row->User->firstName}} {{$row->User->lastName}}</a></td>
-        <td>Rp. {{number_format($row->price)}}</td>
-        <td>{{$row->note}}</td>
-        @if (isset($data->Transaction))
-          @if ($data->Transaction->bidId == $row->id)
-            <td>Choosen</td>
-          @else
-            <td></td>
+  <ul class="collection">
+      <input type="hidden" name="advertisementId" value="{{$data->id}}">
+      @foreach ($data->Bids as $row)
+        <li class="collection-item avatar">
+          <img src="{{url('storage/'.$row->User->photo)}}" alt="" class="circle">
+          <span class="title">{{$row->User->firstName}} {{$row->User->lastName}}</span>
+          <p>Instagram : <a href="{{$row->User->Instagram->link}}" target="_blank">{{$row->User->Instagram->link}}</a> </p>
+          @if (isset($data->Transaction))
+            @if ($row->choosen == 1)
+              <td>Choosen</td>
+            @else
+              <td></td>
+            @endif
           @endif
-        @endif
-      </tr>
-    @endforeach
-  </table>
+        </li>
+      @endforeach
+  </ul>
 </div>
 @endsection

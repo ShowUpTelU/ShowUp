@@ -7,6 +7,7 @@ use App\Bid;
 use App\Advertisement;
 use Illuminate\Http\Request;
 use Session;
+use Auth;
 class TransactionController extends Controller
 {
     /**
@@ -65,6 +66,23 @@ class TransactionController extends Controller
         //
     }
 
+    public function selfShow(){
+      return view('transaction.index',[
+        'data' => Advertisement::whereHas('Transaction', function ($query) {
+                    $query->where('paid','<',2);
+                })->where('userId',Auth::id())->get(),
+        'paid' => 0
+      ]);
+    }
+
+    public function selfDone(){
+      return view('transaction.index',[
+        'data' => Advertisement::whereHas('Transaction', function ($query) {
+                    $query->where('paid',2);
+                })->where('userId',Auth::id())->get(),
+      ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -85,7 +103,9 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        $transaction->paid = 1;
+        $transaction->save();
+        return redirect(route('transaction.self.done'));
     }
 
     /**

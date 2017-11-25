@@ -34,17 +34,16 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/adsPhoto/delete/{id}','AdvertisementPhotoController@destroy')->name('adsPhoto.destroy');
   //Bid
   Route::post('bid','BidController@store')->name('bid.store');
-  Route::get('bid/mine','BidController@mine')->name('bid.mine');
-  Route::get('bid/choosen','BidController@choosen')->name('bid.choosen');
+  Route::get('bid/waiting','BidController@waiting')->name('bid.waiting');
   Route::get('bid/confirmation','BidController@confirmation')->name('bid.confirmation');
   Route::get('bid/ongoing','BidController@ongoing')->name('bid.ongoing');
   Route::get('bid/done','BidController@done')->name('bid.done');
-
-  Route::post('bid/confirmation','BidController@updateConfirmation')->name('bid.updateConfirmation');
-  Route::get('bid/update/{id}/{status}','BidController@update')->name('bid.update');
+  Route::put('bid/setDone/{bid}','BidController@setDone')->name('bid.setDone');
 
   //Transaction
   Route::resource('/transaction','TransactionController');
+  Route::get('transaction/self/show','TransactionController@selfShow')->name('transaction.self.show');
+  Route::get('transaction/self/done','TransactionController@selfDone')->name('transaction.self.done');
 
   Route::get('/home', 'HomeController@index')->name('home');
 });
@@ -60,4 +59,9 @@ Route::group(['middleware' => ['admin']], function () {
   Route::get('list/bid/ongoing','AdminController@bidOngoing')->name('admin.bidOngoing');
   Route::get('list/bid/pay','AdminController@bidPay')->name('admin.bidPay');
   Route::get('list/bid/done','AdminController@bidDone')->name('admin.bidDone');
+  //Transaction
+  Route::get('list/transaction/unpaid','AdminController@transactionUnpaid')->name('admin.transactionUnpaid');
+  Route::get('list/transaction/confirmation','AdminController@transactionConfirmation')->name('admin.transactionConfirmation');
+  Route::get('list/transaction/paid','AdminController@transactionPaid')->name('admin.transactionPaid');
+  Route::post('list/transaction/paid','AdminController@transactionPaidUpdate')->name('admin.transaction.paid');
 });

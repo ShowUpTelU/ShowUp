@@ -24,8 +24,8 @@
         <li><a href="{{route('advertisement.mine')}}">My Ads</a></li>
         <li><a href="{{route('advertisement.index')}}">Looking for Ads</a></li>
         <li><div class="divider"></div></li>
-        <li><a href="{{route('bid.mine')}}">Bids</a></li>
-        <li><a href="{{route('bid.choosen')}}">Choosen Bids</a></li>
+        {{-- <li><a href="{{route('bid.mine')}}">Bids</a></li>
+        <li><a href="{{route('bid.choosen')}}">Choosen Bids</a></li> --}}
         <li><div class="divider"></div></li>
         <li><a href="{{route('bid.ongoing')}}">On going task</a></li>
         <li><a href="{{route('bid.done')}}">Done task</a></li>
@@ -54,14 +54,15 @@
 {{-- END DROPDOWN ADS --}}
 {{-- START DROPDOWN BID --}}
 <ul id="bids" class="dropdown-content">
-  <li><a href="{{route('bid.mine')}}">Bids</a></li>
-  <li><a href="{{route('bid.choosen')}}">Choosen Bids</a></li>
-  <li><a href="{{route('bid.ongoing')}}">On going task</a></li>
-  <li><a href="{{route('bid.done')}}">Done task</a></li>
+  <li><a href="{{route('bid.waiting')}}">Waiting Bids</a></li>
+  <li><a href="{{route('bid.ongoing')}}">On Going Bids</a></li>
+  <li><a href="{{route('bid.done')}}">Done Bids</a></li>
 </ul>
 {{-- END DROPDOWN BID --}}
 {{-- START DROPDOWN TRANSACTION --}}
 <ul id="transaction" class="dropdown-content">
-  <li><a href="{{route('bid.confirmation')}}">Accepted Task</a></li>
+  <li><a href="{{route('transaction.self.show')}}">My Order</a></li>
+  <li><a href="{{route('transaction.self.done')}}">Done Order</a></li>
+  {{-- <li><a href="{{route('bid.confirmation')}}">Accepted Task</a></li> --}}
 </ul>
 {{-- END DROPDOWN TRANSACTION --}}

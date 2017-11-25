@@ -60,7 +60,7 @@
           <div class="card">
             <div class="card-image">
               <img src="{{url('storage/'.$row->path)}}">
-              @if ($data->userId == Auth::id())
+              @if ($data->userId == Auth::id() && !$data->Transaction)
                 <a href="{{route('adsPhoto.destroy',['id' => $row->id])}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
               @endif
             </div>
@@ -94,12 +94,14 @@
             @endif
           </li>
         @endforeach
-        <button class="btn green">Submit Influencer</button>
+        @if ($data->userId == Auth::id() && !$data->Transaction)
+        <button type="submit" class="btn green">Submit Influencer</button>
+        @endif
       </form>
     </ul>
   </div>
   {{-- START USER ACCESS --}}
-  @if ($data->userId == Auth::id())
+  @if ($data->userId == Auth::id() && !$data->Transaction)
     <div class="row">
       <div class="col l6">
         <a class="waves-effect waves-light btn amber modal-trigger full-width" href="#edit"><i class="material-icons left">edit</i>Edit</a>
