@@ -33,7 +33,11 @@
         </div>
       </div>
       <!-- END HEADER -->
-
+      {{-- START VIDEO --}}
+      <div class="video-container">
+        <iframe width="853" height="480" src="https://www.youtube.com/embed/GZmcE3hFzis" frameborder="0" allowfullscreen></iframe>
+      </div>
+      {{-- END VIDEO --}}
       <!-- START CONTENT -->
       <div class="container full-height valign-wrapper">
         <div class="row">
@@ -42,7 +46,7 @@
           </div>
           <div class="col l7">
             <p>As usual when a new business gets trouble in marketing. In fact, marketing is the most important thing in a business where good marketing can market their products. Besides that, there are Instagram users who have a lot of followers but don't utilize it for right things. In fact, have many followers can provide income for the owner of the account. With Show Up! we will benefit both of them.
-</p>
+            </p>
           </div>
         </div>
       </div>

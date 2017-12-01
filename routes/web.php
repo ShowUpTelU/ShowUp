@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+Route::get('teaser',function(){
+  return redirect('https://youtu.be/GZmcE3hFzis');
+});
 //PUBLIC
 Auth::routes();
 //Ads
