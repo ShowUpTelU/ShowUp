@@ -1,11 +1,8 @@
 @component('mail::message')
 <center><img src="{{asset('img/logo-tagline.png')}}" style="width: 350px; height: 250px;"><br>
-  <p>Hi
+<p>Dear {{$datas->firstName}}
 <br>
-Terimakasih atas partisipasi kamu dalam mengisi survey dari showUp!
-segala bentuk saran dan masukan kamu dapat membantu kita menjadi lebih baik lagi. :D
-<br>
-Jika kamu ingin mengetahui informasi lebih lanjut mengenai ShowUp! Silahkan kunjungin laman berikut <a href="https://www.showup.id"></a>
+Thanks for register at ShowUp! . Your account has been activated , you can start using all features of show up, don’t tell anyone about your password and username,if you have any trouble about this account please kindly contact our support team.
 </p>
 </center>
 <br><br>

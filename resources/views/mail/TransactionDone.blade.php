@@ -1,11 +1,9 @@
 @component('mail::message')
 <center><img src="{{asset('img/logo-tagline.png')}}" style="width: 350px; height: 250px;"><br>
-  <p>Hi
+<p>Hi {{$datas->Advertisement->User->firstName}} !
 <br>
-Terimakasih atas partisipasi kamu dalam mengisi survey dari showUp!
-segala bentuk saran dan masukan kamu dapat membantu kita menjadi lebih baik lagi. :D
-<br>
-Jika kamu ingin mengetahui informasi lebih lanjut mengenai ShowUp! Silahkan kunjungin laman berikut <a href="https://www.showup.id"></a>
+Your payment from <a href="{{route('advertisement.show',['id' => $datas->advertisementId])}}">this advertisement</a> has been done, thanks for using ShowUp !
+
 </p>
 </center>
 <br><br>

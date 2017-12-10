@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Advertisement;
 use App\Transaction;
 use App\Bid;
+use Mail;
+use App\Mail\TransactionDoneMail;
 class AdminController extends Controller
 {
     public function advertisement(){
@@ -86,9 +88,10 @@ class AdminController extends Controller
     }
 
     public function transactionPaidUpdate(Request $request){
-      $transaction = Transaction::find($request->advertisementId);
+      $data = $transaction = Transaction::find($request->advertisementId);
       $transaction->paid = 2;
       $transaction->save();
+      Mail::send(new TransactionDoneMail($data));
       return redirect(route('admin.transactionPaid'));
     }
 }

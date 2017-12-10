@@ -6,10 +6,11 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Survey;
-class SurveySent extends Mailable
+use App\User;
+use App\Bid;
+use Auth;
+class BidMail extends Mailable
 {
-
     use Queueable, SerializesModels;
 
     /**
@@ -17,10 +18,10 @@ class SurveySent extends Mailable
      *
      * @return void
      */
-    private $survey;
-    public function __construct(Survey $survey)
+    private $data;
+    public function __construct(Bid $data)
     {
-        $this->survey = $survey;
+        $this->data = $data;
     }
 
     /**
@@ -30,6 +31,6 @@ class SurveySent extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@showup.id')->to($this->survey->email)->markdown('survey.surveySent',['datas' => $this->survey]);
+        return $this->from('noreply@showup.id')->to(Auth::user()->email)->markdown('mail.Bid',['datas' => $this->data]);
     }
 }

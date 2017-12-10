@@ -9,7 +9,8 @@ use Auth;
 use Storage;
 use Session;
 use Illuminate\Http\Request;
-
+use Mail;
+use App\Mail\BidMail;
 class BidController extends Controller
 {
     /**
@@ -92,7 +93,8 @@ class BidController extends Controller
      */
     public function store(Request $request)
     {
-        Bid::create($request->all());
+        $bid = Bid::create($request->all());
+        Mail::send(new BidMail($bid));
         $request->session()->flash('status', 'Create bid was successful!');
         return redirect(route('advertisement.show',['advertisement' => $request->advertisementId]));
     }

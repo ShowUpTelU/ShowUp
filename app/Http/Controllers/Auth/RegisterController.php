@@ -7,7 +7,8 @@ use App\Instagram;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Mail;
+use App\Mail\Register;
 class RegisterController extends Controller
 {
     /*
@@ -76,6 +77,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'address' => $data['address'],
         ]);
+        Mail::send(new Register($user));
         Instagram::create([
           'userId' => $user->id,
           'link' => 'https://www.instagram.com'

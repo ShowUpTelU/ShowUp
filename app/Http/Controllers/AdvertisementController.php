@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Storage;
 use Session;
+use Mail;
+use App\Mail\AdvertisementMail;
 class AdvertisementController extends Controller
 {
     /**
@@ -54,6 +56,7 @@ class AdvertisementController extends Controller
           'dueDate' => 'required|integer|min:0'
         ]);
         $ads =  Advertisement::create($request->all());
+        Mail::send(new AdvertisementMail($ads));
         foreach ($request->photos as $photo) {
           $path = $photo->store('ads', 'public');
           AdvertisementPhoto::create([
