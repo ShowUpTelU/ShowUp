@@ -7,7 +7,7 @@
           <a href="{{ route('logout') }}"
               onclick="event.preventDefault();
                        document.getElementById('logout-form').submit();">
-              Logout  <i class="material-icons right">exit_to_app</i>
+              Keluar  <i class="material-icons right">exit_to_app</i>
           </a>
 
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -21,7 +21,7 @@
           <a href="{{ route('logout') }}"
               onclick="event.preventDefault();
                        document.getElementById('logout-form').submit();">
-              Logout
+              Keluar
           </a>
 
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

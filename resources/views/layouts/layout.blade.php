@@ -30,13 +30,16 @@
             <div class="row">
               <div class="col l6 s12">
                 <h5 class="white-text">Show Up!</h5>
-                <p class="grey-text text-lighten-4">Feel free to explore</p>
+                <p class="grey-text text-lighten-4">Up Everything You Want!</p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Contact Us</h5>
+                <h5 class="white-text">Hubungi Kami</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="#!"><i class="tiny material-icons">email</i></a> public.relation@showup.id</li>
                   <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/showup.official/" target="_blank"><i class="tiny material-icons">photo_camera</i> @showup.official</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/Show-Up-113566795995243/" target="_blank"> Show Up</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/showup.official/" target="_blank">LINE : @bnc3443w</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/showup.official/" target="_blank">Website : https://www.showup.id</a></li>
                 </ul>
               </div>
             </div>

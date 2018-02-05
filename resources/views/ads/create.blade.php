@@ -2,7 +2,7 @@
 @section('content')
 <div class="container full-height">
   <div class="row">
-    <h4>Create Adv</h4>
+    <h4>Buat Iklan</h4>
   </div>
   <div class="row">
     <form class="" action="{{route('advertisement.store')}}" method="post" enctype="multipart/form-data">
@@ -11,28 +11,28 @@
       <input type="hidden" name="status" value="0">
       <div class="input-field col l12 s12">
         <input type="text" name="title" id="title" class="validate" required>
-        <label for="title">Title</label>
+        <label for="title">Judul</label>
         @if ($errors->has('title'))
             <small class="red-text">{{ $errors->first('title') }}</small>
         @endif
       </div>
       <div class="input-field col l12 s12">
         <textarea name="desc" class="materialize-textarea" id="desc" required></textarea>
-        <label for="desc">Description</label>
+        <label for="desc">Deskripsi</label>
         @if ($errors->has('desc'))
             <small class="red-text">{{ $errors->first('desc') }}</small>
         @endif
       </div>
       <div class="input-field col l6 s12">
         <input type="number" name="price" id="price" class="validate" required>
-        <label for="price">Price per Instagram</label>
+        <label for="price">Harga per akun Instagram</label>
         @if ($errors->has('price'))
             <small class="red-text">{{ $errors->first('price') }}</small>
         @endif
       </div>
       <div class="input-field col l6 s12">
         <input type="number" name="dueDate" id="dueDate" required>
-        <label for="dueDate">Day</label>
+        <label for="dueDate">Durasi/hari</label>
         @if ($errors->has('dueDate'))
             <small class="red-text">{{ $errors->first('dueDate') }}</small>
         @endif

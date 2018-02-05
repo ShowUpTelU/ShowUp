@@ -12,4 +12,5 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+   .css('node_modules/materialize-social/materialize-social.css','public/css'),
    .sass('resources/assets/sass/app.scss', 'public/css');

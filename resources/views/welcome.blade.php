@@ -26,9 +26,9 @@
         <div class="row">
           <div class="col l11 offset-l1">
             <h3 class="white-text" style="margin-top: 25%">
-              Search, Find, Take Up <br> Everything You Want!
+              Cari, Temukan <br> Pilih Segala Yang Kamu Inginkan!
             </h3>
-            <p><a href="{{route('survey')}}" class="yellow-text">Help us to improve our services. Take the survey ...</a></p>
+            <p><a href="{{route('survey')}}" class="yellow-text">Bantu Kami Tingkatkan Layanan</a></p>
           </div>
         </div>
       </div>
@@ -45,7 +45,11 @@
             <img src="{{asset('img/landing-page/Picture2.png')}}" class="responsive-img">
           </div>
           <div class="col l7">
-            <p>As usual when a new business gets trouble in marketing. In fact, marketing is the most important thing in a business where good marketing can market their products. Besides that, there are Instagram users who have a lot of followers but don't utilize it for right things. In fact, have many followers can provide income for the owner of the account. With Show Up! we will benefit both of them.
+            <p>Show Up! adalah portal yang memiliki misi menghubungkan antara yang menawarkan
+barang/jasa dalam bentuk iklan ke pada yang mencari barang/jasa tersebut. Barang dapat
+berupa produk yang ingin jual mereka, jasa yang ingin mereka tawarkan atupun bisa sebuah
+perusahaan yang sedang membuka lowongan pekerjaan dapat juga memasangkan
+lowongan tersebut di Show Up!.
             </p>
           </div>
         </div>
@@ -65,7 +69,7 @@
       <div class="container-fluid full-height center">
         <div class="row green-text">
           <div class="col l3 s6">
-            <h3>Our Services</h3>
+            <h3>Kenapa Pasang Iklan di Show Up!</h3>
             <hr>
           </div>
           <div class="col l3 s6">
@@ -95,7 +99,7 @@
       <div class="container-fluid full-height center">
         <div class="row">
           <div class="col l12 s12 green-text">
-            <h3>Our Clients</h3>
+            <h3>Pengguna Show Up!</h3>
             <hr>
           </div>
         </div>
@@ -164,10 +168,13 @@
                 <p class="grey-text text-lighten-4">Up Everything You Want!</p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Contact Us</h5>
+                <h5 class="white-text">Hubungi Kami</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!"><i class="tiny material-icons">email</i></a> public.relation@showup.id</li>
-                  <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/showup.official/" target="_blank"><i class="tiny material-icons">photo_camera</i> @showup.official</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Email : </a> public.relation@showup.id</li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/showup.official/" target="_blank">Instagram :  @showup.official</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/Show-Up-113566795995243/" target="_blank">Facebook:  Show Up</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/showup.official/" target="_blank">LINE : @bnc3443w</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/showup.official/" target="_blank">Website : https://www.showup.id</a></li>
                 </ul>
               </div>
             </div>

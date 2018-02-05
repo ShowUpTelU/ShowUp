@@ -3,14 +3,14 @@
       <a href="{{route('home')}}" class="brand-logo"><img src="{{asset('img/logo-app.png')}}" class="responsive-img nav-logo" style="padding-bottom: 10px"></a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a class="dropdown-button" href="#!" data-activates="ads">Ads <i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a class="dropdown-button" href="#!" data-activates="bids">Bids <i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a class="dropdown-button" href="#!" data-activates="transaction">Transaction <i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="ads">Iklan <i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="bids">Penawar <i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="transaction">Transaksi <i class="material-icons right">arrow_drop_down</i></a></li>
         <li>
           <a href="{{ route('logout') }}"
               onclick="event.preventDefault();
                        document.getElementById('logout-form').submit();">
-              Logout  <i class="material-icons right">exit_to_app</i>
+              Keluar  <i class="material-icons right">exit_to_app</i>
           </a>
 
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
