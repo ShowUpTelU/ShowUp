@@ -50,7 +50,7 @@
         @endif
       </div>
       <div class="input-field col l12 s12">
-        <button type="submit" class="btn amber full-width">Create</button>
+        <button type="submit" class="btn amber full-width">Pasang Iklan</button>
       </div>
     </form>
   </div>

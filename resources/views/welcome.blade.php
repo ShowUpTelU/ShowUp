@@ -33,11 +33,6 @@
         </div>
       </div>
       <!-- END HEADER -->
-      {{-- START VIDEO --}}
-      <div class="video-container">
-        <iframe width="853" height="480" src="https://www.youtube.com/embed/GZmcE3hFzis" frameborder="0" allowfullscreen></iframe>
-      </div>
-      {{-- END VIDEO --}}
       <!-- START CONTENT -->
       <div class="container full-height valign-wrapper">
         <div class="row">
@@ -54,48 +49,6 @@ lowongan tersebut di Show Up!.
           </div>
         </div>
       </div>
-
-      <div id="about" class="container-fluid full-height green valign-wrapper section scrollspy">
-        <div class="row">
-          <div class="col l6 offset-l3 center">
-            <img src="{{asset('img/white-logo.png')}}" class="responsive-img">
-            <p class="white-text">Show Up! is headquartered in Indonesia where the Co-Founder Taufan, Yusuf, Niken are the pioneer of Show Up!.
-               Show Up! was founded to help people advertise and promote everything they want to.
-                Besides that, Show Up! come with a unique concepts and appearances to get their goals.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="container-fluid full-height center">
-        <div class="row green-text">
-          <div class="col l3 s6">
-            <h3>Kenapa Pasang Iklan di Show Up!</h3>
-            <hr>
-          </div>
-          <div class="col l3 s6">
-            <img src="{{asset('img/landing-page/services/branding.png')}}" class="responsive-img">
-          </div>
-          <div class="col l3 s6">
-            <img src="{{asset('img/landing-page/services/editvideo.png')}}" class="responsive-img">
-          </div>
-          <div class="col l3 s6">
-            <img src="{{asset('img/landing-page/services/portal.png')}}" class="responsive-img">
-          </div>
-          <div class="col l3 s6">
-            <img src="{{asset('img/landing-page/services/postads.png')}}" class="responsive-img">
-          </div>
-          <div class="col l3 s6">
-            <img src="{{asset('img/landing-page/services/editposter.png')}}" class="responsive-img">
-          </div>
-          <div class="col l3 s6">
-            <img src="{{asset('img/landing-page/services/profit.png')}}" class="responsive-img">
-          </div>
-          <div class="col l3 s6">
-            <img src="{{asset('img/landing-page/services/escrow.png')}}" class="responsive-img">
-          </div>
-        </div>
-      </div>
-
       <div class="container-fluid full-height center">
         <div class="row">
           <div class="col l12 s12 green-text">
@@ -118,11 +71,45 @@ lowongan tersebut di Show Up!.
           </div>
         </div>
       </div>
-
+      <div class="container-fluid full-height center">
+        <div class="row">
+          <div class="col l12 center green-text">
+            <h3>Keuntungan di Show Up!</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col l6">
+            <div class="card">
+              <div class="card-content black-text">
+                <span class="card-title">Pengiklan</span>
+                <img src="{{asset('img/business.png')}}" class="responsive-img">
+                <ul>
+                  <li>Memudahkan Memasarkan Produk</li>
+                  <li>Brand Menjadi Terkenal</li>
+                  <li>Meningkatkan Profit</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col l6">
+            <div class="card">
+              <div class="card-content black-text">
+                <span class="card-title">Pengguna Instagram</span>
+                <img src="{{asset('img/client.png')}}" class="responsive-img">
+                <ul>
+                  <li>Memberikan penghasilan</li>
+                  <li>Menambah Followers</li>
+                  <li>Menjadi Hitz</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="container-fluid full-height center">
         <div class="row">
           <div class="col l12 green-text">
-            <h3>How we works</h3>
+            <h3>Cara Kerja Kami</h3>
             <hr>
           </div>
         </div>
@@ -151,9 +138,27 @@ lowongan tersebut di Show Up!.
         </div>
       </div>
       <div id="join" class="container-fluid green section scrollspy">
+        <div class="row white-text center">
+          <div class="col l3 s6">
+            Jumlah Iklan <br>
+            <h3>90</h3>
+          </div>
+          <div class="col l3 s6">
+            Jumlah Instagram <br>
+            <h3>133</h3>
+          </div>
+          <div class="col l3 s6">
+            Jumlah Followers <br>
+            <h3>4522</h3>
+          </div>
+          <div class="col l3 s6">
+            Jumlah Like <br>
+            <h3>863123</h3>
+          </div>
+        </div>
         <div class="row">
           <div class="col l12 s12 center" style="margin-top: 20px">
-            <a href="{{route('login')}}"><button class="btn btn-large amber">Start now for free</button></a>
+            <a href="{{route('login')}}"><button class="btn btn-large amber">Mari Bergabung di Show Up</button></a>
           </div>
         </div>
       </div>

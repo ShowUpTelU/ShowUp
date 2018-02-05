@@ -6,20 +6,20 @@
     <div class="col l12 s12">
       <div class="row">
         <div class="col l12 s12 center">
-          <h3>Detail {{$data->title}}'s Post</h3>
+          <h3>Detil {{$data->title}}</h3>
         </div>
       </div>
         <div class="row">
           <div class="input-field col s6">
             <input value="{{$data->title}}" name="title" id="title" type="text" disabled>
-            <label for="title">Title</label>
+            <label for="title">Judul</label>
             @if ($errors->has('title'))
                 <small class="red-text">{{ $errors->first('title') }}</small>
             @endif
           </div>
           <div class="input-field col s6">
             <input value="{{$data->price}}" name="price" id="price" type="number" disabled>
-            <label for="price">Price</label>
+            <label for="price">Harga</label>
             @if ($errors->has('price'))
                 <small class="red-text">{{ $errors->first('price') }}</small>
             @endif
@@ -28,7 +28,7 @@
         <div class="row">
           <div class="input-field col s12">
             <input name="dueDate" id="dueDate" type="date" class="datepicker" value="{{$data->dueDate}}" disabled>
-            <label for="dueDate">Due Date</label>
+            <label for="dueDate">Durasi/hari</label>
             @if ($errors->has('dueDate'))
                 <small class="red-text">{{ $errors->first('dueDate') }}</small>
             @endif
@@ -37,7 +37,7 @@
         <div class="row">
           <div class="input-field col s12">
             <textarea name="desc" id="desc" class="materialize-textarea" disabled>{{$data->desc}}</textarea>
-            <label for="decs">Descriptions</label>
+            <label for="decs">Deskripsi</label>
             @if ($errors->has('desc'))
                 <small class="red-text">{{ $errors->first('desc') }}</small>
             @endif

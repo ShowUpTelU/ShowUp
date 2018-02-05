@@ -3,10 +3,10 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col l12">
-      <h4>Advertisement Lists</h4>
+      <h4>Daftar Iklan</h4>
     </div>
   </div>
-  <div class="row">
+  <div class="row full-height">
     @foreach ($data as $row)
       <div class="col l4 s12">
         <div class="card">

@@ -8,7 +8,7 @@
     <div class="col l5 s12">
       <div class="row">
         <div class="col l12 s12 center">
-          <h3>Login</h3>
+          <h3>Masuk</h3>
         </div>
       </div>
       <form action="{{ route('login') }}" method="post">
@@ -33,13 +33,13 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <a href="{{ route('register') }}">Haven't have account</a> <br>
-            <a href="{{ route('password.request') }}">Forgot Password?</a>
+            <a href="{{ route('password.request') }}">Lupa Kata Sandi?</a><br>
+            <a href="{{ route('register') }}">Belum punya akun?</a>
           </div>
         </div>
         <div class="row center">
           <div class="input-field col s12">
-            <button type="submit" class="btn amber" style="width: 100%">Sign In!</button>
+            <button type="submit" class="btn amber" style="width: 100%">Masuk</button>
           </div>
         </div>
       </form>
