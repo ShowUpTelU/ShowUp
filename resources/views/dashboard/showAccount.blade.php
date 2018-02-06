@@ -13,7 +13,7 @@
     <div class="col l8 s12">
       <table>
         <tr>
-          <td><b>Full Name</b></td>
+          <td><b>Nama Lengkap</b></td>
           <td>{{$data->firstName}} {{$data->lastName}}</td>
         </tr>
         <tr>
@@ -21,11 +21,11 @@
           <td>{{$data->email}}</td>
         </tr>
         <tr>
-          <td><b>Address</b></td>
+          <td><b>Alamat</b></td>
           <td>{{$data->address}}</td>
         </tr>
         <tr>
-          <td><b>Phone</b></td>
+          <td><b>Telepon</b></td>
           <td>{{$data->phone}}</td>
         </tr>
         <tr>

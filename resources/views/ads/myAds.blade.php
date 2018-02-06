@@ -6,7 +6,7 @@
     <div class="col l12 s12">
       <div class="row">
         <div class="col l12 s12 center">
-          <h3>Your Post</h3>
+          <h3>Iklan Anda</h3>
         </div>
       </div>
     </div>
@@ -18,10 +18,10 @@
       <table>
         <tr>
           <th>No.</th>
-          <th>Title</th>
-          <th>Price</th>
-          <th>Created at</th>
-          <th>Action</th>
+          <th>Judul</th>
+          <th>Harga</th>
+          <th>Dibuat pada</th>
+          <th>Aksi</th>
         </tr>
         @foreach ($data as $index => $row)
           <tr>

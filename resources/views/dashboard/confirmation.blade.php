@@ -3,14 +3,14 @@
 <div class="container-fluid full-height">
   <div class="row">
     <div class="col l12">
-      <h5>Need Confirmation</h5>
+      <h5>Butuh Konfirmasi</h5>
       <table class="bordered">
         <tr>
           <th>No.</th>
-          <th>Post</th>
+          <th>Iklan</th>
           <th>Instagram</th>
           <th>Photo</th>
-          <th>Action</th>
+          <th>Aksi</th>
         </tr>
         @foreach ($data as $key => $row)
           <tr>

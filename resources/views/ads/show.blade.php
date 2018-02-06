@@ -17,39 +17,39 @@
     <div class="col l12">
       <table>
         <tr>
-          <td>Title</td>
+          <td>Judul</td>
           <td>{{$data->title}}</td>
         </tr>
         <tr>
-          <td>Publisher</td>
+          <td>Pengiklan</td>
           <td>{{$data->User->firstName}}</td>
         </tr>
         <tr>
-          <td>Description</td>
+          <td>Deskripsi</td>
           <td>{{$data->desc}}</td>
         </tr>
         <tr>
-          <td>Price per User</td>
+          <td>Harga per Instagram</td>
           <td>Rp. {{number_format($data->price)}}</td>
         </tr>
         <tr>
           <td>Status</td>
           <td>
             @if ($data->status == 0)
-              Open to bid
+              Penawaran terbuka
             @elseif ($data->status == 1)
-              On Going
+              Iklan sedang berjalan
             @else
-              Done
+              Selesai
             @endif
           </td>
         </tr>
         <tr>
-          <td>Published at</td>
+          <td>Dibuat pada</td>
           <td>{{$data->created_at}}</td>
         </tr>
         <tr>
-          <td>Due Date</td>
+          <td>Durasi</td>
           <td>{{$data->dueDate}} Days</td>
         </tr>
       </table>
@@ -70,7 +70,7 @@
     @endforeach
   </div>
   <div class="row">
-    <h5>List of bidders</h5>
+    <h5>Daftar Penawar</h5>
     <ul class="collection">
       <form action="{{route('transaction.store')}}" method="post">
         {{ csrf_field() }}
@@ -82,20 +82,20 @@
             <p>Instagram : <a href="{{$row->User->Instagram->link}}" target="_blank">{{$row->User->Instagram->link}}</a> </p>
             @if (isset($data->Transaction))
               @if ($row->choosen == 1)
-                <td>Choosen</td>
+                <td>Terpilih</td>
               @else
                 <td></td>
               @endif
             @elseif ($data->userId == Auth::id())
                 <div class="secondary-content">
                   <input type="checkbox" name="Bids[]" value="{{$row->id}}" class="filled-in" id="filled-in-box-{{$row->id}}" />
-                  <label for="filled-in-box-{{$row->id}}">Choose Influencer</label>
+                  <label for="filled-in-box-{{$row->id}}">Pilih Instagram</label>
                 </div>
             @endif
           </li>
         @endforeach
         @if ($data->userId == Auth::id() && !$data->Transaction)
-        <button type="submit" class="btn green">Submit Influencer</button>
+        <button type="submit" class="btn green">Simpan Instagram</button>
         @endif
       </form>
     </ul>
@@ -120,32 +120,31 @@
       <div class="row">
         <div class="col l12 s12">
           @if ($data->checkBid($data->id,Auth::id()) == 0 && !isset($data->Transaction))
-            <button data-target="bid" class="btn modal-trigger blue">Click here to bidding!</button>
+            <button data-target="bid" class="btn modal-trigger blue">Tekan untuk penawaran</button>
           @else
             @if (isset($data->Transaction))
-              <p>Bid has been closed</p>
+              <p>Penawaran ditutup</p>
             @else
-              <p>Youre already set the bid</p>
+              <p>Anda telah melakukan penawaran</p>
             @endif
           @endif
-
         </div>
       </div>
 
       {{-- START BID MODAL --}}
       <div id="bid" class="modal modal-fixed-footer">
         <div class="modal-content">
-          <h4>Start Bidding</h4>
+          <h4>Penawaran</h4>
           <form action="{{route('bid.store')}}" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="userId" value="{{Auth::id()}}">
             <input type="hidden" name="advertisementId" value="{{$data->id}}">
             <p>
-              Are you sure to take this post?
+              Anda yakin untuk bersedia mengambil iklan ini?
             </p>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn blue">Save</button>
+          <button type="submit" class="btn blue">Simpan</button>
         </div>
         </form>
       </div>
@@ -159,7 +158,7 @@
 {{-- START EDIT MODAL --}}
 <div id="edit" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <h4>Edit Advertisement</h4>
+      <h4>Perbaharui Iklan</h4>
       <form action="{{route('advertisement.update',['advertisement' => $data->id])}}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <input type="hidden" name="_method" value="PUT">
@@ -167,28 +166,28 @@
         <input type="hidden" name="status" value="{{$data->status}}">
         <div class="input-field col l12 s12">
           <input type="text" name="title" id="title" class="validate" value="{{$data->title}}" required>
-          <label for="title">Title</label>
+          <label for="title">Judul</label>
           @if ($errors->has('title'))
               <small class="red-text">{{ $errors->first('title') }}</small>
           @endif
         </div>
         <div class="input-field col l12 s12">
           <textarea name="desc" class="materialize-textarea" id="desc"> {{$data->desc}}</textarea>
-          <label for="desc">Description</label>
+          <label for="desc">Deskripsi</label>
           @if ($errors->has('desc'))
               <small class="red-text">{{ $errors->first('desc') }}</small>
           @endif
         </div>
         <div class="input-field col l6 s12">
           <input type="number" name="price" id="price" class="validate" value="{{$data->price}}" required>
-          <label for="price">Price</label>
+          <label for="price">Harga</label>
           @if ($errors->has('price'))
               <small class="red-text">{{ $errors->first('price') }}</small>
           @endif
         </div>
         <div class="input-field col l6 s12">
           <input type="date" name="dueDate" id="dueDate" value="{{$data->dueDate}}" class="datepicker" required>
-          <label for="dueDate">Due Date</label>
+          <label for="dueDate">Durasi</label>
           @if ($errors->has('dueDate'))
               <small class="red-text">{{ $errors->first('dueDate') }}</small>
           @endif
@@ -207,7 +206,7 @@
         </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn amber full-width">Save</button>
+      <button type="submit" class="btn amber full-width">Simpan</button>
     </div>
     </form>
   </div>

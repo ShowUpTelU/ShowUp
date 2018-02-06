@@ -19,9 +19,9 @@
       <table class="table bordered">
         <tr>
           <th>No.</th>
-          <th>Advertisement</th>
-          <th>Price</th>
-          <th>Due Date</th>
+          <th>Iklan</th>
+          <th>Harga</th>
+          <th>Durasi</th>
           @if (!isset($bid))
             <th>Set to done</th>
           @elseif (isset($done))
@@ -45,9 +45,9 @@
               @elseif (isset($done))
                 <td>
                   @if ($row->paid == 1)
-                    Paid
+                    Terbayar
                   @else
-                    Unpaid
+                    Belum terbayar
                   @endif
                 </td>
               @endif

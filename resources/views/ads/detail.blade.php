@@ -58,15 +58,15 @@
         @if (isset(Auth::user()->id) == $data->userId)
         <div class="row">
           <div class="col l12">
-            <h5>List of Bidders</h5><hr>
+            <h5>Daftar Penawar</h5><hr>
             <table>
               <tr>
                 <th>No</th>
-                <th>Name</th>
-                <th>Note</th>
-                <th>Price</th>
+                <th>Nama</th>
+                <th>Catatan</th>
+                <th>Harga</th>
                 @if ($data->checkTransaction($data->id) == 0)
-                <th>Action</th>
+                <th>Aksi</th>
                 @endif
               </tr>
               @foreach ($data->Bids as $index => $row)
@@ -90,10 +90,10 @@
             </table>
 
             @if ($winner)
-              <h5>The winner of bid</h5><hr>
+              <h5>Penawar terpilih</h5><hr>
               <table>
                 <tr>
-                  <th>Name</th>
+                  <th>Nama</th>
                   <th><a href="{{$winner->Bid->Users->Instagram->link}}" target="_blank">{{$winner->Bid->Users->Instagram->accountName}}</a></th>
                 </tr>
               </table>
@@ -109,20 +109,20 @@
                 <form action="{{route('ads.destroy',['advertisement' => $data->id])}}" method="post">
                   <input type="hidden" name="_method" value="DELETE">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn red full-width">Delete this post</button>
+                  <button type="submit" class="btn red full-width">Hapus iklan ini</button>
                 </form>
               </div>
             </div>
           @endif
         @else
           @if ($data->checkBid(isset(Auth::user()->id),$data->id) > 0)
-            <h5>Youre already set the bid.</h5>
+            <h5>Anda telah melakukan penawaran</h5>
           @else
             {{-- START BID --}}
             @auth
               <div class="row">
                 <div class="col l12 s12">
-                  <h5>Bid right now!</h5>
+                  <h5>Tawar sekarang juga</h5>
                   <hr>
                   <form class="col l12 s12" action="{{route('bid.store')}}" method="post">
                     {{ csrf_field() }}
@@ -131,7 +131,7 @@
                     <div class="row">
                       <div class="input-field col s12">
                         <input name="price" placeholder="Put your new price" id="price" type="number" class="validate">
-                        <label for="price">New Price</label>
+                        <label for="price">Harga Baru</label>
                       </div>
                     </div>
                     <div class="row">
@@ -141,7 +141,7 @@
                     </div>
                     <div class="row">
                       <div class="input-field col s12">
-                        <button type="submit" class="btn blue full-width">Go Bid!</button>
+                        <button type="submit" class="btn blue full-width">Simpan</button>
                       </div>
                     </div>
                   </form>
@@ -149,15 +149,15 @@
               </div>
             @endauth
             @guest
-              <h5>List of Bidders</h5><hr>
+              <h5>Daftar Penawar</h5><hr>
               <table>
                 <tr>
                   <th>No</th>
-                  <th>Name</th>
-                  <th>Note</th>
-                  <th>Price</th>
+                  <th>Nama</th>
+                  <th>Catatan</th>
+                  <th>Harga</th>
                   @if ($data->checkTransaction($data->id) == 0)
-                  <th>Action</th>
+                  <th>Aksi</th>
                   @endif
                 </tr>
                 @foreach ($data->Bids as $index => $row)
@@ -180,10 +180,10 @@
                 @endforeach
               </table>
               @if ($winner)
-                <h5>The winner of bid</h5><hr>
+                <h5>Penawar terpilih</h5><hr>
                 <table>
                   <tr>
-                    <th>Name</th>
+                    <th>Nama</th>
                     <th><a href="{{$winner->Bid->Users->Instagram->link}}" target="_blank">{{$winner->Bid->Users->Instagram->accountName}}</a></th>
                   </tr>
                 </table>

@@ -6,9 +6,9 @@
     <table class="table bordered">
       <tr>
         <th>No.</th>
-        <th>Advertisement</th>
+        <th>Iklan</th>
         <th>Instagram</th>
-        <th>Price</th>
+        <th>Harga</th>
         <th>{{$action}}</th>
       </tr>
       @foreach ($data as $index => $row)

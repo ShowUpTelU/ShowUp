@@ -3,15 +3,15 @@
 <div class="container-fluid full-height">
   <div class="row">
     <div class="col l12">
-      <h5>All Bidders win</h5>
+      <h5>Semua Penawar Terpilih</h5>
       <table class="bordered">
         <tr>
           <th>No.</th>
-          <th>Name</th>
+          <th>Nama</th>
           <th>Instagram</th>
-          <th>Note</th>
-          <th>Price</th>
-          <th>Ads</th>
+          <th>Catatan</th>
+          <th>Harga</th>
+          <th>Ikan</th>
         </tr>
         @foreach ($data as $key => $row)
           <tr>

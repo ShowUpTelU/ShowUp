@@ -6,11 +6,11 @@
     <table class="table bordered">
       <tr>
         <th>No.</th>
-        <th>Advertisement</th>
+        <th>Iklan</th>
         <th>User</th>
-        <th>Price</th>
+        <th>Harga</th>
         @if ($confirmation == 1)
-          <th>Confirmation</th>
+          <th>Konfirmasi</th>
         @endif
       </tr>
       @foreach ($data as $index => $row)

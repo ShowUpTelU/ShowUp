@@ -9,7 +9,7 @@
     <div class="col l5 s12">
       <div class="row">
         <div class="col l12 s12 center">
-          <h3>Change Password</h3>
+          <h3>Ubah Password</h3>
         </div>
       </div>
       <form action="{{ route('password.email') }}" method="post">
@@ -25,7 +25,7 @@
         </div>
         <div class="row center">
           <div class="input-field col s12">
-            <button type="submit" class="btn amber" style="width: 100%">Send Email!</button>
+            <button type="submit" class="btn amber" style="width: 100%">Kirim Email</button>
           </div>
         </div>
       </form>

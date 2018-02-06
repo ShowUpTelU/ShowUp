@@ -20,7 +20,7 @@
             <p>Rp. {{number_format($row->price)}}</p>
           </div>
           <div class="card-action">
-            <a href="{{route('advertisement.show',['advertisement' => $row->id])}}">More...</a>
+            <a href="{{route('advertisement.show',['advertisement' => $row->id])}}">Selengkapnya...</a>
           </div>
         </div>
       </div>

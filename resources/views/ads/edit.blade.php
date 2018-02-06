@@ -6,7 +6,7 @@
     <div class="col l12 s12">
       <div class="row">
         <div class="col l12 s12 center">
-          <h3>Edit {{$data->title}}'s Post</h3>
+          <h3>Perbaharui Iklan {{$data->title}}</h3>
         </div>
       </div>
         <form action="{{route('ads.update',['ad'=>$data->id])}}" method="post" enctype="multipart/form-data">
@@ -15,14 +15,14 @@
           <div class="row">
             <div class="input-field col s6">
               <input value="{{$data->title}}" name="title" id="title" type="text" required>
-              <label for="title">Title</label>
+              <label for="title">Judul</label>
               @if ($errors->has('title'))
                   <small class="red-text">{{ $errors->first('title') }}</small>
               @endif
             </div>
             <div class="input-field col s6">
               <input value="{{$data->price}}" name="price" id="price" type="number" required>
-              <label for="price">Price</label>
+              <label for="price">Harga</label>
               @if ($errors->has('price'))
                   <small class="red-text">{{ $errors->first('price') }}</small>
               @endif
@@ -31,7 +31,7 @@
           <div class="row">
             <div class="input-field col s12">
               <textarea name="desc" id="desc" class="materialize-textarea" required>{{$data->desc}}</textarea>
-              <label for="decs">Descriptions</label>
+              <label for="decs">Deskripsi</label>
               @if ($errors->has('desc'))
                   <small class="red-text">{{ $errors->first('desc') }}</small>
               @endif
@@ -40,7 +40,7 @@
           <div class="row">
             <div class="file-field input-field col s6">
               <input name="dueDate" id="dueDate" type="number" value="{{$data->dueDate}}" required>
-              <label for="dueDate">Due Date</label>
+              <label for="dueDate">Durasi</label>
               @if ($errors->has('dueDate'))
                   <small class="red-text">{{ $errors->first('dueDate') }}</small>
               @endif
@@ -60,7 +60,7 @@
           </div>
           <div class="row center">
             <div class="input-field col s12">
-              <button type="submit" class="btn amber" style="width: 100%">Update!</button>
+              <button type="submit" class="btn amber" style="width: 100%">Simpan</button>
             </div>
           </div>
         </form>

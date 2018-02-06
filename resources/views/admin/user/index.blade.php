@@ -2,14 +2,14 @@
 @section('content')
 <div class="row">
   <div class="col l12">
-    <h5>List User</h5>
+    <h5>Daftar User</h5>
     <table class="table bordered">
       <tr>
         <th>No.</th>
-        <th>Name</th>
+        <th>Nama</th>
         <th>Email</th>
         <th>Instagram</th>
-        <th>Photo</th>
+        <th>Foto</th>
       </tr>
       @foreach ($data as $index => $row)
         <tr>

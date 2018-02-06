@@ -29,14 +29,14 @@
         <div class="row">
           <div class="input-field col s6">
             <input value="{{Auth::user()->firstName}}" name="firstName" id="first_name" type="text" class="validate" required>
-            <label for="first_name">First Name</label>
+            <label for="first_name">Nama Depan</label>
             @if ($errors->has('firstName'))
                 <small class="red-text">{{ $errors->first('firstName') }}</small>
             @endif
           </div>
           <div class="input-field col s6">
             <input value="{{Auth::user()->lastName}}" name="lastName" id="last_name" type="text" class="validate" required>
-            <label for="last_name">Last Name</label>
+            <label for="last_name">Nama Belakang</label>
             @if ($errors->has('lastName'))
                 <small class="red-text">{{ $errors->first('lastName') }}</small>
             @endif
@@ -70,7 +70,7 @@
         <div class="row">
           <div class="input-field col s12">
             <input value="{{Auth::user()->phone}}" name="phone" id="phone" type="tel" class="validate" required>
-            <label for="phone">Phone</label>
+            <label for="phone">Telepon</label>
             @if ($errors->has('phone'))
                 <small class="red-text">{{ $errors->first('phone') }}</small>
             @endif
@@ -79,7 +79,7 @@
         <div class="row">
           <div class="input-field col s12">
             <textarea name="address" id="address" class="materialize-textarea" required>{{Auth::user()->address}}</textarea>
-            <label for="address">Address</label>
+            <label for="address">Alamat</label>
             @if ($errors->has('address'))
                 <small class="red-text">{{ $errors->first('address') }}</small>
             @endif
@@ -96,7 +96,7 @@
         </div>
         <div class="row center">
           <div class="input-field col s12">
-            <button type="submit" class="btn amber" style="width: 100%">Update</button>
+            <button type="submit" class="btn amber" style="width: 100%">Simpan</button>
           </div>
         </div>
     </div>

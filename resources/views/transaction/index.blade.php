@@ -4,15 +4,15 @@
 <div class="container">
     <div class="row">
       <div class="col l12">
-        <h4>Transaction</h4>
+        <h4>Transaksi</h4>
         <table>
           <tr>
             <th>No.</th>
-            <th>Advertisement</th>
-            <th>Price</th>
-            <th>Days</th>
+            <th>Iklan</th>
+            <th>Harga</th>
+            <th>Hari</th>
             @if (isset($paid))
-              <th>Confirmation</th>
+              <th>Konfirmasi</th>
             @endif
           </tr>
           @foreach ($data as $index => $row)

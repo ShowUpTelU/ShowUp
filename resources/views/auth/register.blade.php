@@ -9,7 +9,7 @@
     <div class="col l5 s12">
       <div class="row">
         <div class="col l12 s12 center">
-          <h3>Register</h3>
+          <h3>Daftar</h3>
         </div>
       </div>
       <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
@@ -17,14 +17,14 @@
         <div class="row">
           <div class="input-field col s6">
             <input name="firstName" id="first_name" type="text" class="validate" required>
-            <label for="first_name">First Name</label>
+            <label for="first_name">Nama Depan</label>
             @if ($errors->has('firstName'))
                 <small class="red-text">{{ $errors->first('firstName') }}</small>
             @endif
           </div>
           <div class="input-field col s6">
             <input name="lastName" id="last_name" type="text" class="validate" required>
-            <label for="last_name">Last Name</label>
+            <label for="last_name">Nama Belakang</label>
             @if ($errors->has('lastName'))
                 <small class="red-text">{{ $errors->first('lastName') }}</small>
             @endif
@@ -58,7 +58,7 @@
         <div class="row">
           <div class="input-field col s12">
             <input name="phone" id="phone" type="tel" class="validate" required>
-            <label for="phone">Phone</label>
+            <label for="phone">Telp</label>
             @if ($errors->has('phone'))
                 <small class="red-text">{{ $errors->first('phone') }}</small>
             @endif
@@ -67,7 +67,7 @@
         <div class="row">
           <div class="input-field col s12">
             <textarea name="address" id="address" class="materialize-textarea" required></textarea>
-            <label for="address">Address</label>
+            <label for="address">Alamat</label>
             @if ($errors->has('address'))
                 <small class="red-text">{{ $errors->first('address') }}</small>
             @endif
@@ -75,7 +75,7 @@
         </div>
         <div class="row center">
           <div class="input-field col s12">
-            <button type="submit" class="btn amber" style="width: 100%">Sign Up!</button>
+            <button type="submit" class="btn amber" style="width: 100%">Daftar</button>
           </div>
         </div>
       </form>

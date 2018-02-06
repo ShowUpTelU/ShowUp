@@ -16,7 +16,7 @@
         </li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="sass.html">Ads</a></li>
+        <li><a href="sass.html">Iklan</a></li>
         <li>
           <a href="{{ route('logout') }}"
               onclick="event.preventDefault();

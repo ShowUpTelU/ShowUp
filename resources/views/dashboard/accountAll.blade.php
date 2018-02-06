@@ -21,7 +21,6 @@
         @endforeach
       </table>
        {{ $data->links('vendor.pagination.default') }}
-
     </div>
   </div>
 </div>

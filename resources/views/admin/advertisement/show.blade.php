@@ -4,19 +4,19 @@
   <div class="col l12">
     <table>
       <tr>
-        <td>Title</td>
+        <td>Judul</td>
         <td>{{$data->title}}</td>
       </tr>
       <tr>
-        <td>Publisher</td>
+        <td>Pengiklan</td>
         <td>{{$data->User->firstName}}</td>
       </tr>
       <tr>
-        <td>Description</td>
+        <td>Deskripsi</td>
         <td>{{$data->desc}}</td>
       </tr>
       <tr>
-        <td>Price</td>
+        <td>Harga</td>
         <td>Rp. {{number_format($data->price)}}</td>
       </tr>
       <tr>
@@ -32,11 +32,11 @@
         </td>
       </tr>
       <tr>
-        <td>Published at</td>
+        <td>Dibuat pada</td>
         <td>{{$data->created_at}}</td>
       </tr>
       <tr>
-        <td>Due Date</td>
+        <td>Durasi</td>
         <td>{{$data->dueDate}}</td>
       </tr>
     </table>
@@ -55,7 +55,7 @@
   @endforeach
 </div>
 <div class="row">
-  <h5>List of bidders</h5>
+  <h5>Daftar Penawar</h5>
   <ul class="collection">
       <input type="hidden" name="advertisementId" value="{{$data->id}}">
       @foreach ($data->Bids as $row)

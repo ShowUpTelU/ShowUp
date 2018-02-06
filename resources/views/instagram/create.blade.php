@@ -6,7 +6,7 @@
     <div class="col l12 s12">
       <div class="row">
         <div class="col l12 s12 center">
-          <h3>Your Instagram</h3>
+          <h3>Instagram</h3>
         </div>
       </div>
       @if ($data)

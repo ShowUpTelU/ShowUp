@@ -2,13 +2,13 @@
 @section('content')
 <div class="row">
   <div class="col l12">
-    <h5>List Advertisement</h5>
+    <h5>Daftar Iklan</h5>
     <table class="table bordered">
       <tr>
         <th>No.</th>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Due Date</th>
+        <th>Judul</th>
+        <th>Harga</th>
+        <th>Durasi</th>
         <th>Detail</th>
       </tr>
       @foreach ($data as $index => $row)

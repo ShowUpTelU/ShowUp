@@ -6,20 +6,20 @@
     <div class="col l12 s12">
       <div class="row">
         <div class="col l12 s12 center">
-          <h3>Detail {{$data->title}}'s Post</h3>
+          <h3>Detail Iklan {{$data->title}}</h3>
         </div>
       </div>
         <div class="row">
           <div class="input-field col s6">
             <input value="{{$data->title}}" name="title" id="title" type="text" disabled>
-            <label for="title">Title</label>
+            <label for="title">Judul</label>
             @if ($errors->has('title'))
                 <small class="red-text">{{ $errors->first('title') }}</small>
             @endif
           </div>
           <div class="input-field col s6">
             <input value="{{$data->price}}" name="price" id="price" type="number" disabled>
-            <label for="price">Price</label>
+            <label for="price">Harga</label>
             @if ($errors->has('price'))
                 <small class="red-text">{{ $errors->first('price') }}</small>
             @endif
@@ -28,7 +28,7 @@
         <div class="row">
           <div class="input-field col s12">
             <input name="dueDate" id="dueDate" type="date" class="datepicker" value="{{$data->dueDate}}" disabled>
-            <label for="dueDate">Due Date</label>
+            <label for="dueDate">Durasi</label>
             @if ($errors->has('dueDate'))
                 <small class="red-text">{{ $errors->first('dueDate') }}</small>
             @endif
@@ -37,7 +37,7 @@
         <div class="row">
           <div class="input-field col s12">
             <textarea name="desc" id="desc" class="materialize-textarea" disabled>{{$data->desc}}</textarea>
-            <label for="decs">Descriptions</label>
+            <label for="decs">Deskripsi</label>
             @if ($errors->has('desc'))
                 <small class="red-text">{{ $errors->first('desc') }}</small>
             @endif
@@ -57,15 +57,15 @@
         </div>
         <div class="row">
           <div class="col l12">
-            <h5>List of Bidders</h5><hr>
+            <h5>Daftar Penawar</h5><hr>
             <table>
               <tr>
                 <th>No</th>
-                <th>Name</th>
-                <th>Note</th>
-                <th>Price</th>
+                <th>Nama</th>
+                <th>Catatan</th>
+                <th>Harga</th>
                 @if ($data->checkTransaction($data->id) == 0)
-                <th>Action</th>
+                <th>Aksi</th>
                 @endif
               </tr>
               @foreach ($data->Bids as $index => $row)
@@ -87,12 +87,12 @@
         <div class="row">
           <div class="col l12">
             @if ($winner)
-              <h5>The winner of bid</h5><hr>
+              <h5>Penawar terpilih</h5><hr>
               <table>
                 <tr>
-                  <th>Name</th>
-                  <th>Note</th>
-                  <th>Price</th>
+                  <th>Nama</th>
+                  <th>Catatan</th>
+                  <th>Harga</th>
                 </tr>
                   <tr>
                     <td><a href="{{$winner->Bid->Users->Instagram->link}}" target="_blank">{{$winner->Bid->Users->Instagram->accountName}}</a></td>
